@@ -1,0 +1,15 @@
+syntax on
+set t_Co=256
+colorscheme tergeist
+
+map vsplit vs
+nmap <silent> <C-Up> :wincmd k<CR>
+nmap <silent> <C-Down> :wincmd j<CR>
+nmap <silent> <C-Left> :wincmd h<CR>
+nmap <silent> <C-Right> :wincmd l<CR>
+
+autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+
+set fillchars+=vert:\ 

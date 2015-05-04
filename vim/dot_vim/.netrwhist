@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/tergeist/tmp/linux-3.17/arch/arc/plat-arcfpga/include'
+let g:netrw_dirhist_2='/home/tergeist/opt/JACORB/JacORB'
+let g:netrw_dirhist_3='/home/tergeist/devel/packages/satueur/lib/libc/string'
+let g:netrw_dirhist_4='/home/tergeist/embedded/olinuxino/github/buildroot-a13-olinuxino/output'
+let g:netrw_dirhist_5='/home/tergeist/embedded/olinuxino/buildroot-a13-olinuxino/package/sunxi-tools'
+let g:netrw_dirhist_6='/home/tergeist/embedded/olinuxino/buildroot-a13-olinuxino/output/build/a13-olinuxino-software-3512f4a/SOFTWARE/Python/pyA13/pyA13/gpio/port'
+let g:netrw_dirhist_7='/home/tergeist/devel/packages/dominus/build/CMakeFiles'
