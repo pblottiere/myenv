@@ -14,13 +14,20 @@ if version > 580
 endif
 let g:colors_name="tergeist"
 
+" blue : 74
+" green : 77
+" purple : 135
+" orange : 209
+" dark grey : 239
+" light grey : 249
+
 hi Boolean         guifg=#99CC99                        ctermfg=77
 hi Character       guifg=#A8FF60                        ctermfg=77
-hi Number          guifg=#99CC99                        ctermfg=77 
+hi Number          guifg=#99CC99                        ctermfg=77
 hi String          guifg=#A8FF60                        ctermfg=77
 hi Conditional     guifg=#92C5F7               gui=none ctermfg=209
 hi Constant        guifg=#99CC99               gui=none ctermfg=77
-hi Cursor          guifg=#000000 guibg=#F8F8F0          ctermfg=1      
+hi Cursor          guifg=#000000 guibg=#F8F8F0          ctermfg=1
 hi iCursor         guifg=#000000 guibg=#F8F8F0          ctermfg=1
 hi Debug           guifg=#BCA3A3               gui=none ctermfg=1
 hi Define          guifg=#66D9EF                        ctermfg=1
@@ -38,7 +45,7 @@ hi Float           guifg=#99CC99                        ctermfg=1
 hi FoldColumn      guifg=#465457 guibg=#000000
 hi Folded          guifg=#465457 guibg=#000000
 hi Function        guifg=#DAD085                        ctermfg=74
-hi Identifier      guifg=#B6B7EB                        ctermfg=1
+hi Identifier      guifg=#B6B7EB                        ctermfg=74  cterm=none
 hi Ignore          guifg=#808080 guibg=bg
 hi IncSearch       guifg=#C4BE89 guibg=#000000
 
@@ -50,7 +57,7 @@ hi SpecialKey      guifg=#66D9EF               gui=none ctermfg=1
 hi MatchParen      guifg=#B7B9B8 guibg=#444444 gui=none
 hi ModeMsg         guifg=#A8FF60
 hi MoreMsg         guifg=#A8FF60
-hi Operator        guifg=#92C5F7                        ctermfg=1
+hi Operator        guifg=#92C5F7                        ctermfg=209
 
 " complete menu
 hi Pmenu           guifg=#66D9EF guibg=#000000
@@ -74,16 +81,16 @@ if has("spell")
     hi SpellLocal  guisp=#70F0F0 gui=undercurl
     hi SpellRare   guisp=#FFFFFF gui=undercurl
 endif
-hi Statement       guifg=#92C5F7               gui=none ctermfg=209
-hi StatusLine      guifg=#455354 guibg=fg      gui=none
-hi StatusLineNC    guifg=#808080 guibg=#080808
+hi Statement       guifg=#92C5F7               gui=none ctermfg=239
+hi StatusLine      guifg=#455354 guibg=fg      gui=none ctermfg=239
+hi StatusLineNC    guifg=#808080 guibg=#080808          ctermfg=239
 hi StorageClass    guifg=#B6B7EB               gui=none ctermfg=77
 hi Structure       guifg=#66D9EF                        ctermfg=77
 hi Tag             guifg=#92C5F7               gui=none ctermfg=1
 hi Title           guifg=#B6B7EB               gui=none
 hi Todo            guifg=#FFFFFF guibg=bg      gui=none
 
-hi Typedef         guifg=#66D9EF                        ctermfg=1 
+hi Typedef         guifg=#66D9EF                        ctermfg=1
 hi Type            guifg=#66D9EF               gui=none ctermfg=77
 hi Underlined      guifg=#808080               gui=underline
 
@@ -93,15 +100,15 @@ hi Visual                        guibg=#403D3D
 hi WarningMsg      guifg=#FFFFFF guibg=#333333
 hi WildMenu        guifg=#66D9EF guibg=#000000
 
-hi TabLineFill     guifg=#1D1F21 guibg=#1D1F21 
-hi TabLine         guibg=#1D1F21 guifg=#808080 gui=none 
+hi TabLineFill     guifg=#1D1F21 guibg=#1D1F21
+hi TabLine         guibg=#1D1F21 guifg=#808080 gui=none
 
 hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249
 hi Comment         guifg=#FFFFFF                        ctermfg=239
 hi CursorLine                    guibg=#293739
 hi CursorLineNr    guifg=#B6B7EB               gui=none
 hi CursorColumn                  guibg=#293739
-hi ColorColumn                   guibg=#232526
+hi ColorColumn                   guibg=#232526          ctermbg=239
 hi LineNr          guifg=#465457 guibg=#232526
 hi NonText         guifg=#465457
 hi SpecialKey      guifg=#465457

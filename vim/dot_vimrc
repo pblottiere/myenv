@@ -1,15 +1,26 @@
+" syntax highlighting and colors
 syntax on
 set t_Co=256
 colorscheme tergeist
 
+" windows
 map vsplit vs
-nmap <silent> <C-Up> :wincmd k<CR>
-nmap <silent> <C-Down> :wincmd j<CR>
-nmap <silent> <C-Left> :wincmd h<CR>
-nmap <silent> <C-Right> :wincmd l<CR>
 
+nmap <silent> <S-Up> :wincmd k<CR>
+nmap <silent> <S-Down> :wincmd j<CR>
+nmap <silent> <S-Left> :wincmd h<CR>
+nmap <silent> <S-Right> :wincmd l<CR>
+
+set fillchars+=vert:\
+
+" nerdtree
 autocmd VimEnter * NERDTree
 autocmd BufEnter * NERDTreeMirror
 nmap <silent> <c-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.o$', '\~$', '\.so$', '\.pyc$', '\.pyf$']
 
-set fillchars+=vert:\ 
+" auto remove whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
+" 80 columns
+set colorcolumn=80
