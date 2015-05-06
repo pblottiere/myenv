@@ -1,17 +1,16 @@
 " syntax highlighting and colors
 syntax on
-set t_Co=256
 colorscheme tergeist
 
 " windows
 map vsplit vs
-
+"
 nmap <silent> <S-Up> :wincmd k<CR>
 nmap <silent> <S-Down> :wincmd j<CR>
 nmap <silent> <S-Left> :wincmd h<CR>
 nmap <silent> <S-Right> :wincmd l<CR>
 
-set fillchars+=vert:\
+set fillchars+=vert:\ "
 
 " nerdtree
 autocmd VimEnter * NERDTree
@@ -20,29 +19,17 @@ autocmd BufEnter * NERDTreeMirror
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.o$', '\~$', '\.so$', '\.pyc$', '\.pyf$']
 
-function! NERDTreeQuit()
-  redir => buffersoutput
-  silent buffers
-  redir END
-"                     1BufNo  2Mods.     3File           4LineNo
-  let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
-  let windowfound = 0
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
-  for bline in split(buffersoutput, "\n")
-    let m = matchlist(bline, pattern)
-
-    if (len(m) > 0)
-      if (m[2] =~ '..a..')
-        let windowfound = 1
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
       endif
     endif
-  endfor
-
-  if (!windowfound)
-    quitall
   endif
 endfunction
-autocmd WinEnter * call NERDTreeQuit()
 
 " auto remove whitespace
 autocmd BufWritePre * :%s/\s\+$//e
