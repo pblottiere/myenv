@@ -1,0 +1,25 @@
+[user]
+	name = Blottiere Paul
+	email = blottiere.paul@gmail.com
+[core]
+	editor = vim
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	st = status
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow
+	frag = magenta
+	old = red
+	new = green
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
