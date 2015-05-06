@@ -1,3 +1,5 @@
+MYENVRC=.myenvrc
+
 #------------------------------------------------------------------------------
 # update
 #------------------------------------------------------------------------------
@@ -12,13 +14,28 @@ update: update-vim update-git
 #------------------------------------------------------------------------------
 # install
 #------------------------------------------------------------------------------
+install-myenvrc:
+	if [ "`cat ~/.bashrc | grep $(MYENVRC) | wc -l`" = "0" ]; \
+	then \
+		echo "\nsource ~/$(MYENVRC)" >> ~/.bashrc; \
+		touch ~/$(MYENVRC); \
+	fi
+
 install-vim:
 	cd vim && make install
 
 install-git:
 	cd git && make install
 
-install: install-vim install-git
+install: install-myenvrc install-vim install-git
+
+#------------------------------------------------------------------------------
+# uninstall
+#------------------------------------------------------------------------------
+uninstall-myenvrc:
+	rm ~/$(MYENVRC)
+
+uninstall: uninstall-myenvrc
 
 #------------------------------------------------------------------------------
 # clean
