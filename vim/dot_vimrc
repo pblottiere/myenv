@@ -1,10 +1,11 @@
 " syntax highlighting and colors
 syntax on
+set t_Co=256
 colorscheme tergeist
 
 " windows
 map vsplit vs
-"
+
 nmap <silent> <S-Up> :wincmd k<CR>
 nmap <silent> <S-Down> :wincmd j<CR>
 nmap <silent> <S-Left> :wincmd h<CR>
@@ -35,4 +36,10 @@ endfunction
 autocmd BufWritePre * :%s/\s\+$//e
 
 " 80 columns
-set colorcolumn=80
+set colorcolumn=81
+
+" tab => 4 spaces
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
