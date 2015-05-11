@@ -1,4 +1,7 @@
-MYENVRC=.myenvrc
+#-------------------------------------------------------------------------------
+# const, paths
+#-------------------------------------------------------------------------------
+PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/scripts
 
 #------------------------------------------------------------------------------
 # update
@@ -15,11 +18,7 @@ update: update-vim update-git
 # install
 #------------------------------------------------------------------------------
 install-myenvrc:
-	if [ "`cat ~/.bashrc | grep $(MYENVRC) | wc -l`" = "0" ]; \
-	then \
-		echo "\nsource ~/$(MYENVRC)" >> ~/.bashrc; \
-		touch ~/$(MYENVRC); \
-	fi
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.create()"
 
 install-vim:
 	cd vim && make install
@@ -33,9 +32,15 @@ install: install-myenvrc install-vim install-git
 # uninstall
 #------------------------------------------------------------------------------
 uninstall-myenvrc:
-	rm ~/$(MYENVRC)
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.delete()"
 
-uninstall: uninstall-myenvrc
+uninstall-vim:
+	cd vim && make uninstall
+
+uninstall-git:
+	cd git && make uninstall
+
+uninstall: uninstall-myenvrc uninstall-vim uninstall-git
 
 #------------------------------------------------------------------------------
 # clean
