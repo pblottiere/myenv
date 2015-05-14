@@ -15,7 +15,7 @@ update:
 #-------------------------------------------------------------------------------
 uninstall:
 	rm -f $(HOME)/.gitconfig
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.remove_part('GIT')"
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('GIT')"
 
 #-------------------------------------------------------------------------------
 # install
@@ -27,8 +27,8 @@ install:
 	fi
 	cp dot_gitconfig $(HOME)/.gitconfig
 
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.remove_part('GIT')"
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.init_part('GIT')"
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('GIT')"
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_create('GIT')"
 
 #-------------------------------------------------------------------------------
 # clean

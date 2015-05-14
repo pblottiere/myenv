@@ -17,7 +17,7 @@ update:
 uninstall:
 	rm -f $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.remove_part('VIM')"
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('VIM')"
 
 #-------------------------------------------------------------------------------
 # install
@@ -35,8 +35,8 @@ install:
 	fi
 	cp dot_vimrc $(HOME)/.vimrc
 
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.remove_part('VIM')"
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.init_part('VIM')"
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('VIM')"
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_create('VIM')"
 
 #-------------------------------------------------------------------------------
 # clean

@@ -72,8 +72,8 @@ def part_exist(filename, part):
 def part_create(filename, part, begin=False):
     if not part_exist(filename, part):
         if begin == True:
-            prepend(filename, part_begin(part))
             prepend(filename, part_end(part))
+            prepend(filename, part_begin(part))
         else:
             append(filename, part_begin(part))
             append(filename, part_end(part))
@@ -88,8 +88,6 @@ def part_add(filename, part, data):
 
         # want to insert data in part, so we search where to insert in file
         lines = f.readlines()
-        print filename
-        print lines
 
         try:
             pos = lines.index(part_begin(part))+1
@@ -101,8 +99,6 @@ def part_add(filename, part, data):
 
         # insert data in list
         lines.insert(pos, "%s\n" % data)
-
-        print lines
 
         # delete and recreate the file
         delete(filename)
@@ -123,16 +119,20 @@ def part_delete(filename, part):
 
         lines = f.readlines()
         lines_to_keep = []
-        to_rm = False
 
+        to_rm = False
+        end_found = False
         for l in lines:
-            if l == part_begin(part):
-                to_rm = True
-            elif l == part_end(part):
-                to_rm = False
+            if not end_found:
+                if l == part_begin(part):
+                    to_rm = True
+                elif l == part_end(part):
+                    end_found = True
             else:
-                if not to_rm:
-                    lines_to_keep.append(l)
+                to_rm = False
+
+            if not to_rm:
+                lines_to_keep.append(l)
 
         f.close()
 

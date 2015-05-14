@@ -26,7 +26,10 @@ install-vim:
 install-git:
 	cd git && make install
 
-install: install-myenvrc install-vim install-git
+install-fluxbox:
+	cd fluxbox && make install
+
+install: install-myenvrc install-vim install-git install-fluxbox
 
 #------------------------------------------------------------------------------
 # uninstall
@@ -40,7 +43,10 @@ uninstall-vim:
 uninstall-git:
 	cd git && make uninstall
 
-uninstall: uninstall-myenvrc uninstall-vim uninstall-git
+uninstall-fluxbox:
+	cd fluxbox && make uninstall
+
+uninstall: uninstall-myenvrc uninstall-vim uninstall-git uninstall-fluxbox
 
 #------------------------------------------------------------------------------
 # clean

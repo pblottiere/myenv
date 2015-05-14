@@ -5,14 +5,15 @@ import os
 import sys
 import fileinput
 
-sys.path.insert(0, ".")
+sys.path.insert(0, "../scripts")
 import confoption
 
 #-------------------------------------------------------------------------------
 # const, paths, ...
 #-------------------------------------------------------------------------------
-MYENVRC=".myenvrc"
-BASHRC=".bashrc"
+
+HOME=".fluxbox"
+APPS="apps"
 
 #===============================================================================
 #
@@ -20,49 +21,32 @@ BASHRC=".bashrc"
 #
 #===============================================================================
 #-------------------------------------------------------------------------------
-# myenvrc
+# home
 #-------------------------------------------------------------------------------
-def myenvrc():
+def home():
     home = os.path.expanduser("~")
-    return os.path.join(home, MYENVRC)
+    return os.path.join(home, HOME)
 
 #-------------------------------------------------------------------------------
-# bashrc
+# apps
 #-------------------------------------------------------------------------------
-def bashrc():
-    home = os.path.expanduser("~")
-    return os.path.join(home, BASHRC)
-
-#-------------------------------------------------------------------------------
-# create
-#-------------------------------------------------------------------------------
-def create():
-    rc = confoption.create(myenvrc())
-    if rc == True:
-        confoption.part_create(bashrc(), "MYENV")
-        confoption.part_add(bashrc(), "MYENV", "source %s" % myenvrc())
-
-#-------------------------------------------------------------------------------
-# delete
-#-------------------------------------------------------------------------------
-def delete():
-    confoption.delete(myenvrc())
-    confoption.part_delete(bashrc(), "MYENV")
-
-#-------------------------------------------------------------------------------
-# part_add
-#-------------------------------------------------------------------------------
-def part_add(part, data):
-    confoption.part_add(myenvrc(), part, data)
+def apps():
+    return os.path.join(home(), APPS)
 
 #-------------------------------------------------------------------------------
 # part_create
 #-------------------------------------------------------------------------------
-def part_create(part):
-    confoption.part_create(myenvrc(), part)
+def part_create():
+    confoption.part_create(apps(), "MYENV", begin=True)
+
+#-------------------------------------------------------------------------------
+# part_add
+#-------------------------------------------------------------------------------
+def part_add(data):
+    confoption.part_add(apps(), "MYENV", data)
 
 #-------------------------------------------------------------------------------
 # part_delete
 #-------------------------------------------------------------------------------
-def part_delete(part):
-    confoption.part_delete(myenvrc(), part)
+def part_delete():
+    confoption.part_delete(apps(), "MYENV")
