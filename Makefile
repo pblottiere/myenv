@@ -12,7 +12,10 @@ update-vim:
 update-git:
 	@cd git && make update
 
-update: update-vim update-git
+update-urxvt:
+	@cd urxvt && make update
+
+update: update-vim update-git update-urxvt
 
 #------------------------------------------------------------------------------
 # install
@@ -29,7 +32,10 @@ install-git:
 install-fluxbox:
 	@cd fluxbox && make install
 
-install: install-myenvrc install-vim install-git install-fluxbox
+install-urxvt:
+	@cd urxvt && make install
+
+install: install-myenvrc install-vim install-git install-fluxbox install-urxvt
 
 #------------------------------------------------------------------------------
 # uninstall
@@ -46,7 +52,10 @@ uninstall-git:
 uninstall-fluxbox:
 	@cd fluxbox && make uninstall
 
-uninstall: uninstall-myenvrc uninstall-vim uninstall-git uninstall-fluxbox
+uninstall-urxvt:
+	@cd urxvt && make uninstall
+
+uninstall: uninstall-myenvrc uninstall-vim uninstall-git uninstall-fluxbox uninstall-urxvt
 
 #------------------------------------------------------------------------------
 # clean
@@ -57,4 +66,7 @@ clean-vim:
 clean-git:
 	@cd git && make clean
 
-clean: clean-vim clean-git
+clean-urxvt:
+	@cd urxvt && make clean
+
+clean: clean-vim clean-git clean-urxvt
