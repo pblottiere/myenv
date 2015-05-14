@@ -37,7 +37,7 @@ def keys():
 # part_create
 #-------------------------------------------------------------------------------
 def part_create():
-    confoption.part_create(keys(), "MYENV")
+    confoption.part_create(keys(), "MYENV", begin=True)
 
 #-------------------------------------------------------------------------------
 # part_add

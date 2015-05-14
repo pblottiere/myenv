@@ -29,6 +29,7 @@ install-keys:
 	@echo -n "Install 'fluxbox/keys' configuration..."
 	@python -c "import keys; keys.part_delete()"
 	@python -c "import keys; keys.part_create()"
+	@python -c "import keys; keys.part_add('Mod1 F1 :Exec urxvt')"
 	@python -c "import keys; keys.part_add('Mod4 w Mod4 q :ArrangeWindowsVertical')"
 	@python -c "import keys; keys.part_add('Mod4 w Mod4 a :ArrangeWindowsHorizontal')"
 	@echo ": done"
