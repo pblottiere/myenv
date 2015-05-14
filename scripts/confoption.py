@@ -49,7 +49,7 @@ def prepend(filename, data):
 # part_begin
 #-------------------------------------------------------------------------------
 def part_begin(part):
-    return "## %s BEGIN ##\n" % part
+    return "## %s BEGIN (DO NOT EDIT THIS PART) ##\n" % part
 
 #-------------------------------------------------------------------------------
 # part_end

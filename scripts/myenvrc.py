@@ -13,6 +13,7 @@ import confoption
 #-------------------------------------------------------------------------------
 MYENVRC=".myenvrc"
 BASHRC=".bashrc"
+PART="MYENV"
 
 #===============================================================================
 #
@@ -39,15 +40,15 @@ def bashrc():
 def create():
     rc = confoption.create(myenvrc())
     if rc == True:
-        confoption.part_create(bashrc(), "MYENV")
-        confoption.part_add(bashrc(), "MYENV", "source %s" % myenvrc())
+        confoption.part_create(bashrc(), PART)
+        confoption.part_add(bashrc(), PART, "source %s" % myenvrc())
 
 #-------------------------------------------------------------------------------
 # delete
 #-------------------------------------------------------------------------------
 def delete():
     confoption.delete(myenvrc())
-    confoption.part_delete(bashrc(), "MYENV")
+    confoption.part_delete(bashrc(), PART)
 
 #-------------------------------------------------------------------------------
 # part_add
