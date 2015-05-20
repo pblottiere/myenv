@@ -9,6 +9,28 @@ import os
 #
 #===============================================================================
 #-------------------------------------------------------------------------------
+# search_position
+#-------------------------------------------------------------------------------
+def search_position(filename, pattern):
+
+    position = None
+
+    # open file
+    f = open(filename, 'r+')
+
+    # want to insert data in part, so we search where to insert in file
+    lines = f.readlines()
+
+    try:
+        position = lines.index(pattern)+1
+    except:
+        pass
+
+    f.close()
+
+    return position
+
+#-------------------------------------------------------------------------------
 # create
 #-------------------------------------------------------------------------------
 def create(filename):
@@ -33,6 +55,27 @@ def delete(filename):
 def append(filename, data):
     f = open(filename, 'a')
     f.write(data)
+    f.close()
+
+#-------------------------------------------------------------------------------
+# insert
+#-------------------------------------------------------------------------------
+def insert(filename, data, position):
+    # get data in file
+    f = open(filename, 'r+')
+    lines = f.readlines()
+
+    # insert
+    lines.insert(position, "%s\n" % data)
+
+    # delete and recreate the file
+    delete(filename)
+    create(filename)
+
+    # write the list of lines
+    f = open(filename, 'r+')
+    for l in lines:
+        f.write(l)
     f.close()
 
 #-------------------------------------------------------------------------------
@@ -69,11 +112,15 @@ def part_exist(filename, part):
 #-------------------------------------------------------------------------------
 # part_create
 #-------------------------------------------------------------------------------
-def part_create(filename, part, begin=False):
+def part_create(filename, part, begin=False, before=None):
     if not part_exist(filename, part):
         if begin == True:
             prepend(filename, part_end(part))
             prepend(filename, part_begin(part))
+        elif before != None:
+            position = search_position(filename, before)
+            insert(filename, part_end(part), position-1)
+            insert(filename, part_begin(part), position-1)
         else:
             append(filename, part_begin(part))
             append(filename, part_end(part))
@@ -83,22 +130,14 @@ def part_create(filename, part, begin=False):
 #-------------------------------------------------------------------------------
 def part_add(filename, part, data):
     if os.path.isfile(filename) and part_exist(filename, part):
-        # open file
-        f = open(filename, 'r+')
-
-        # want to insert data in part, so we search where to insert in file
-        lines = f.readlines()
-
-        try:
-            pos = lines.index(part_begin(part))+1
-        except:
-            # should not be here
-            return
-
-        f.close()
+        # search position
+        position = search_position(filename, part_begin(part))
 
         # insert data in list
-        lines.insert(pos, "%s\n" % data)
+        f = open(filename, 'r+')
+        lines = f.readlines()
+        f.close()
+        lines.insert(position, "%s\n" % data)
 
         # delete and recreate the file
         delete(filename)
