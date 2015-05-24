@@ -5,11 +5,6 @@
  Contact: phalkunz@gmail.com
  Date: May 23, 2009
  Modified: June 15, 2009
-
- Additional modifications:
- Author: Phil Christensen (http://bubblehouse.org)
- Contact: phil@bubblehouse.org
- Date: February 22, 2010
 """
 
 import os, sys, re, subprocess
