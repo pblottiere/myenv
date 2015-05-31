@@ -18,7 +18,10 @@ update-urxvt:
 update-svn:
 	@cd svn && make update
 
-update: update-vim update-git update-urxvt update-svn
+update-vmail:
+	@cd vmail && make update
+
+update: update-vim update-git update-urxvt update-svn update-vmail
 
 #------------------------------------------------------------------------------
 # install
@@ -41,7 +44,10 @@ install-urxvt:
 install-svn:
 	@cd svn && make install
 
-install: install-myenvrc install-vim install-git install-fluxbox install-urxvt install-svn
+install-vmail:
+	@cd vmail && make install
+
+install: install-myenvrc install-vim install-git install-fluxbox install-urxvt install-svn install-vmail
 
 #------------------------------------------------------------------------------
 # uninstall
@@ -64,7 +70,10 @@ uninstall-urxvt:
 uninstall-svn:
 	@cd svn && make uninstall
 
-uninstall: uninstall-myenvrc uninstall-vim uninstall-git uninstall-fluxbox uninstall-urxvt uninstall-svn
+uninstall-vmail:
+	@cd vmail && make uninstall
+
+uninstall: uninstall-myenvrc uninstall-vim uninstall-git uninstall-fluxbox uninstall-urxvt uninstall-svn uinstall-vmail
 
 #------------------------------------------------------------------------------
 # clean
@@ -81,4 +90,7 @@ clean-urxvt:
 clean-svn:
 	@cd svn && make clean
 
-clean: clean-vim clean-git clean-urxvt clean-svn
+clean-vmail:
+	@cd vmail && make clean
+
+clean: clean-vim clean-git clean-urxvt clean-svn clean-vmail
