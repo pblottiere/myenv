@@ -20,6 +20,7 @@ let g:colors_name="tergeist"
 " orange : 209
 " dark grey : 239
 " light grey : 249
+" pink : 13
 
 hi Boolean         guifg=#99CC99                        ctermfg=77
 hi Character       guifg=#A8FF60                        ctermfg=77
@@ -27,11 +28,11 @@ hi Number          guifg=#99CC99                        ctermfg=77
 hi String          guifg=#A8FF60                        ctermfg=77
 hi Conditional     guifg=#92C5F7               gui=none ctermfg=209
 hi Constant        guifg=#99CC99               gui=none ctermfg=77
-hi Cursor          guifg=#000000 guibg=#F8F8F0          ctermfg=1
-hi iCursor         guifg=#000000 guibg=#F8F8F0          ctermfg=1
-hi Debug           guifg=#BCA3A3               gui=none ctermfg=1
-hi Define          guifg=#66D9EF                        ctermfg=1
-hi Delimiter       guifg=#8F8F8F                        ctermfg=1
+hi Cursor          guifg=#000000 guibg=#F8F8F0          ctermfg=13
+hi iCursor         guifg=#000000 guibg=#F8F8F0          ctermfg=13
+hi Debug           guifg=#BCA3A3               gui=none ctermfg=13
+hi Define          guifg=#66D9EF                        ctermfg=13
+hi Delimiter       guifg=#8F8F8F                        ctermfg=13
 hi DiffAdd                       guibg=#13354A
 hi DiffChange      guifg=#89807D guibg=#4C4745
 hi DiffDelete      guifg=#960050 guibg=#1E0010
@@ -49,10 +50,10 @@ hi Identifier      guifg=#B6B7EB                        ctermfg=74  cterm=none
 hi Ignore          guifg=#808080 guibg=bg
 hi IncSearch       guifg=#C4BE89 guibg=#000000
 
-hi Keyword         guifg=#92C5F7               gui=none ctermfg=1
-hi Label           guifg=#A8FF60               gui=none ctermfg=1
+hi Keyword         guifg=#92C5F7               gui=none ctermfg=135
+hi Label           guifg=#A8FF60               gui=none ctermfg=135
 hi Macro           guifg=#C4BE89               gui=none ctermfg=135
-hi SpecialKey      guifg=#66D9EF               gui=none ctermfg=1
+hi SpecialKey      guifg=#66D9EF               gui=none ctermfg=135
 
 hi MatchParen      guifg=#B7B9B8 guibg=#444444 gui=none
 hi ModeMsg         guifg=#A8FF60
