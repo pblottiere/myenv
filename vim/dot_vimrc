@@ -1,3 +1,6 @@
+"-------------------------------------------------------------------------------
+" general
+"-------------------------------------------------------------------------------
 " syntax highlighting and colors
 syntax on
 set t_Co=256
@@ -12,25 +15,6 @@ nmap <silent> <S-Left> :wincmd h<CR>
 nmap <silent> <S-Right> :wincmd l<CR>
 
 set fillchars+=vert:\ "
-
-" nerdtree
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-autocmd BufEnter * NERDTreeMirror
-nmap <silent> <c-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.o$', '\~$', '\.so$', '\.pyc$', '\.pyf$']
-
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-
-function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
-    endif
-  endif
-endfunction
 
 " auto remove whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -59,3 +43,43 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-l> :call NumberToggle()<CR>
+
+"-------------------------------------------------------------------------------
+" plugins
+"-------------------------------------------------------------------------------
+" plugin manager
+execute pathogen#infect()
+
+" nerdtree
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+autocmd BufEnter * NERDTreeMirror
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.o$', '\~$', '\.so$', '\.pyc$', '\.pyf$']
+
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_error_symbol = "✗"
+
+let g:syntastic_enable_signs = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_highlighting = 0

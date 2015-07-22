@@ -38,15 +38,15 @@ hi DiffChange      guifg=#89807D guibg=#4C4745
 hi DiffDelete      guifg=#960050 guibg=#1E0010
 hi DiffText                      guibg=#4C4745 gui=none
 
-hi Directory       guifg=#AAAAAA               gui=none ctermfg=74
+hi Directory       guifg=#AAAAAA               gui=none ctermfg=74 cterm=bold
 hi Error           guifg=#A8FF60 guibg=#1E0010
 hi ErrorMsg        guifg=#92C5F7 guibg=#232526 gui=none
 hi Exception       guifg=#DAD085               gui=none
 hi Float           guifg=#99CC99                        ctermfg=1
 hi FoldColumn      guifg=#465457 guibg=#000000
 hi Folded          guifg=#465457 guibg=#000000
-hi Function        guifg=#DAD085                        ctermfg=74
-hi Identifier      guifg=#B6B7EB                        ctermfg=74  cterm=none
+hi Function        guifg=#DAD085                        ctermfg=74  cterm=bold
+hi Identifier      guifg=#B6B7EB                        ctermfg=74  cterm=bold
 hi Ignore          guifg=#808080 guibg=bg
 hi IncSearch       guifg=#C4BE89 guibg=#000000
 
@@ -95,7 +95,7 @@ hi Typedef         guifg=#66D9EF                        ctermfg=1
 hi Type            guifg=#66D9EF               gui=none ctermfg=77
 hi Underlined      guifg=#808080               gui=underline
 
-hi VertSplit       guifg=#808080 guibg=#080808          ctermfg=239
+hi VertSplit       guifg=#808080 guibg=#080808 ctermbg=none ctermfg=234
 hi VisualNOS                     guibg=#403D3D
 hi Visual                        guibg=#403D3D
 hi WarningMsg      guifg=#FFFFFF guibg=#333333
@@ -104,15 +104,26 @@ hi WildMenu        guifg=#66D9EF guibg=#000000
 hi TabLineFill     guifg=#1D1F21 guibg=#1D1F21
 hi TabLine         guibg=#1D1F21 guifg=#808080 gui=none
 
-hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249
+hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249 ctermbg=233
 hi Comment         guifg=#FFFFFF                        ctermfg=239
 hi CursorLine                    guibg=#293739
 hi CursorLineNr    guifg=#B6B7EB               gui=none
 hi CursorColumn                  guibg=#293739
 hi ColorColumn                   guibg=#232526          ctermbg=239
-hi LineNr          guifg=#465457 guibg=#232526          ctermfg=74
+hi LineNr          guifg=#465457 guibg=#232526          ctermfg=74 cterm=bold
 hi NonText         guifg=#465457
 hi SpecialKey      guifg=#465457
+
+" syntastic
+hi SyntasticErrorLine ctermbg=none ctermfg=none
+hi SyntasticWarningLine ctermbg=none ctermfg=none
+hi SyntasticStyleErrorLine ctermbg=none ctermfg=none
+hi SyntasticStyleWarningLine ctermbg=none ctermfg=none
+
+hi SyntasticErrorSign ctermbg=none ctermfg=none
+hi SyntasticWarningSign ctermbg=none ctermfg=none
+
+hi SignColumn ctermbg=none
 
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
