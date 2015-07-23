@@ -18,6 +18,7 @@ let g:colors_name="tergeist"
 " green : 77
 " purple : 135
 " orange : 209
+" dark dark grey : 233
 " dark grey : 239
 " light grey : 249
 " pink : 13
@@ -45,7 +46,7 @@ hi Exception       guifg=#DAD085               gui=none
 hi Float           guifg=#99CC99                        ctermfg=1
 hi FoldColumn      guifg=#465457 guibg=#000000
 hi Folded          guifg=#465457 guibg=#000000
-hi Function        guifg=#DAD085                        ctermfg=74  cterm=bold
+hi Function        guifg=#DAD085                        ctermfg=74  cterm=none
 hi Identifier      guifg=#B6B7EB                        ctermfg=74  cterm=bold
 hi Ignore          guifg=#808080 guibg=bg
 hi IncSearch       guifg=#C4BE89 guibg=#000000
@@ -83,8 +84,8 @@ if has("spell")
     hi SpellRare   guisp=#FFFFFF gui=undercurl
 endif
 hi Statement       guifg=#92C5F7               gui=none ctermfg=239
-hi StatusLine      guifg=#455354 guibg=fg      gui=none ctermfg=239
-hi StatusLineNC    guifg=#808080 guibg=#080808          ctermfg=239
+hi StatusLine      guifg=#455354 guibg=fg      gui=none ctermfg=234
+hi StatusLineNC    guifg=#808080 guibg=#080808          ctermfg=234
 hi StorageClass    guifg=#B6B7EB               gui=none ctermfg=77
 hi Structure       guifg=#66D9EF                        ctermfg=77
 hi Tag             guifg=#92C5F7               gui=none ctermfg=1
@@ -109,7 +110,7 @@ hi Comment         guifg=#FFFFFF                        ctermfg=239
 hi CursorLine                    guibg=#293739
 hi CursorLineNr    guifg=#B6B7EB               gui=none
 hi CursorColumn                  guibg=#293739
-hi ColorColumn                   guibg=#232526          ctermbg=239
+hi ColorColumn                   guibg=#232526          ctermbg=234
 hi LineNr          guifg=#465457 guibg=#232526          ctermfg=74 cterm=bold
 hi NonText         guifg=#465457
 hi SpecialKey      guifg=#465457
@@ -120,8 +121,8 @@ hi SyntasticWarningLine ctermbg=none ctermfg=none
 hi SyntasticStyleErrorLine ctermbg=none ctermfg=none
 hi SyntasticStyleWarningLine ctermbg=none ctermfg=none
 
-hi SyntasticErrorSign ctermbg=none ctermfg=none
-hi SyntasticWarningSign ctermbg=none ctermfg=none
+hi SyntasticErrorSign ctermbg=none ctermfg=1
+hi SyntasticWarningSign ctermbg=none ctermfg=172
 
 hi SignColumn ctermbg=none
 

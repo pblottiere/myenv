@@ -37,8 +37,10 @@ set nonumber
 function! NumberToggle()
     if(&relativenumber == 1)
         set norelativenumber
+        " SyntasticCheck " reactive syntastic sign bar
     else
         set relativenumber
+        " SyntasticToggleMode " deactive syntastic sign bar
     endif
 endfunc
 
@@ -51,11 +53,13 @@ nnoremap <C-l> :call NumberToggle()<CR>
 execute pathogen#infect()
 
 " nerdtree
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree " start nerdtree at startup
 autocmd VimEnter * wincmd p
 autocmd BufEnter * NERDTreeMirror
 nmap <silent> <c-n> :NERDTreeToggle<CR>
+
 let NERDTreeIgnore=['\.o$', '\~$', '\.so$', '\.pyc$', '\.pyf$']
+let g:NERDTreeWinSize=25
 
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
@@ -74,12 +78,15 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_warning_symbol = "⚠"
+" let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_warning_symbol = "✗"
 let g:syntastic_error_symbol = "✗"
+" let g:syntastic_warning_symbol = "●"
+" let g:syntastic_error_symbol = "●"
 
 let g:syntastic_enable_signs = 1
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_enable_highlighting = 0
