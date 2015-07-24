@@ -36,7 +36,7 @@ install:
 	then \
 		mv $(HOME)/.urxvt $(HOME)/.urxvt_$(NOW); \
 	fi
-	@cp dot_urxvt $(HOME)/.urxvt
+	@cp -r dot_urxvt $(HOME)/.urxvt
 	@echo ": done"
 
 #-------------------------------------------------------------------------------

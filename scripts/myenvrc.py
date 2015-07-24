@@ -66,4 +66,6 @@ def part_create(part):
 # part_delete
 #-------------------------------------------------------------------------------
 def part_delete(part):
-    confoption.part_delete(myenvrc(), part)
+    rc = confoption.create(myenvrc())
+    if rc == True:
+        confoption.part_delete(myenvrc(), part)
