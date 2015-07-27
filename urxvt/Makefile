@@ -10,7 +10,7 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 update:
 	@echo -n "Update 'urxvt' configuration..."
 	@cp $(HOME)/.Xdefaults dot_xdefaults
-	@cp -r $(HOME)/.urxvt dot_urxvt
+	@cp -r $(HOME)/.urxvt/* dot_urxvt/
 	@echo ": done"
 
 #-------------------------------------------------------------------------------

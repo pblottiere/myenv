@@ -1,6 +1,6 @@
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " general
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " syntax highlighting and colors
 syntax on
 set t_Co=256
@@ -20,7 +20,11 @@ set fillchars+=vert:\ "
 autocmd BufWritePre * :%s/\s\+$//e
 
 " 80 columns
-set colorcolumn=81
+" set colorcolumn=81
+augroup vimrc_autocmds
+    autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
+    autocmd BufEnter * match OverLength /\%81v.*/
+augroup END
 
 " tab => 4 spaces
 filetype plugin indent on
@@ -46,9 +50,9 @@ endfunc
 
 nnoremap <C-l> :call NumberToggle()<CR>
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " plugins
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " plugin manager
 execute pathogen#infect()
 
@@ -81,8 +85,10 @@ set statusline+=%*
 " let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_warning_symbol = "✗"
 let g:syntastic_error_symbol = "✗"
-" let g:syntastic_warning_symbol = "●"
-" let g:syntastic_error_symbol = "●"
+let g:syntastic_style_warning_symbol = "✗"
+let g:syntastic_style_error_symbol = "✗"
+" let g:syntastic_style_warning_symbol = "●"
+" let g:syntastic_style_error_symbol = "●"
 
 let g:syntastic_enable_signs = 1
 let g:syntastic_always_populate_loc_list = 0
@@ -90,3 +96,11 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_enable_highlighting = 0
+
+let g:syntastic_aggregate_errors = 1
+
+let g:syntastic_cpp_checkers = ['gcc', 'cppcheck', 'verapp']
+let g:syntastic_cpp_check_header = 1
+
+let g:syntastic_arduino_checkers = ['avrgcc']
+let g:syntastic_arduino_check_header = 1

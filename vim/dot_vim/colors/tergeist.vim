@@ -105,12 +105,12 @@ hi WildMenu        guifg=#66D9EF guibg=#000000
 hi TabLineFill     guifg=#1D1F21 guibg=#1D1F21
 hi TabLine         guibg=#1D1F21 guifg=#808080 gui=none
 
-hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249 ctermbg=233
-hi Comment         guifg=#FFFFFF                        ctermfg=239
+hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249 ctermbg=235
+hi Comment         guifg=#FFFFFF                        ctermfg=242
 hi CursorLine                    guibg=#293739
 hi CursorLineNr    guifg=#B6B7EB               gui=none
 hi CursorColumn                  guibg=#293739
-hi ColorColumn                   guibg=#232526          ctermbg=234
+hi ColorColumn                   guibg=#232526          ctermbg=232
 hi LineNr          guifg=#465457 guibg=#232526          ctermfg=74 cterm=bold
 hi NonText         guifg=#465457
 hi SpecialKey      guifg=#465457
@@ -123,6 +123,8 @@ hi SyntasticStyleWarningLine ctermbg=none ctermfg=none
 
 hi SyntasticErrorSign ctermbg=none ctermfg=1
 hi SyntasticWarningSign ctermbg=none ctermfg=172
+hi SyntasticStyleErrorSign ctermbg=none ctermfg=172
+hi SyntasticStyleWarningSign ctermbg=none ctermfg=172
 
 hi SignColumn ctermbg=none
 
