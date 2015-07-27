@@ -64,6 +64,7 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore=['\.o$', '\~$', '\.so$', '\.pyc$', '\.pyf$']
 let g:NERDTreeWinSize=25
+let g:NERDTreeDirArrows=1
 
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
