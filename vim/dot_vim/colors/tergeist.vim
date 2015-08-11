@@ -45,8 +45,8 @@ hi Error           guifg=#A8FF60 guibg=#1E0010          "ctermfg=red
 hi ErrorMsg        guifg=#92C5F7 guibg=#232526 gui=none "ctermfg=red
 hi Exception       guifg=#DAD085               gui=none "ctermfg=red
 hi Float           guifg=#99CC99                        ctermfg=1
-hi FoldColumn      guifg=#465457 guibg=#000000          ctermfg=red ctermbg=235
-hi Folded          guifg=#465457 guibg=#000000          ctermfg=239 ctermbg=235
+hi FoldColumn      guifg=#465457 guibg=#000000          ctermfg=239 ctermbg=235
+hi Folded          guifg=#465457 guibg=#000000          ctermfg=235 ctermbg=235
 hi Function        guifg=#DAD085                        ctermfg=74  cterm=none
 hi Identifier      guifg=#B6B7EB                        ctermfg=74  cterm=bold
 hi Ignore          guifg=#808080 guibg=bg               "ctermfg=red

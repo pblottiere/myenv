@@ -108,3 +108,11 @@ let g:syntastic_arduino_check_header = 1
 
 " folding
 setlocal foldmethod=indent
+setlocal foldcolumn=1
+setlocal foldlevel=1
+setlocal foldlevelstart=1
+
+autocmd BufRead * set foldmethod=indent
+autocmd BufRead * set foldcolumn=1
+autocmd BufRead * set foldlevel=1
+autocmd BufRead * set foldlevelstart=1
