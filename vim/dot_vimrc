@@ -105,3 +105,6 @@ let g:syntastic_cpp_check_header = 1
 
 let g:syntastic_arduino_checkers = ['avrgcc']
 let g:syntastic_arduino_check_header = 1
+
+" folding
+setlocal foldmethod=indent
