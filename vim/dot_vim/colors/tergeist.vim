@@ -129,6 +129,9 @@ hi SyntasticStyleWarningSign ctermbg=none ctermfg=172
 
 hi SignColumn ctermbg=none
 
+" YCM
+hi Pmenu ctermfg=74 ctermbg=233 guifg=#ffffff guibg=#0000ff
+
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark

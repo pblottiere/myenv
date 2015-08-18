@@ -106,6 +106,12 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_arduino_checkers = ['avrgcc']
 let g:syntastic_arduino_check_header = 1
 
+" you complete me
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
 " folding
 setlocal foldmethod=indent
 setlocal foldcolumn=1
