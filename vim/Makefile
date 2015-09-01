@@ -5,6 +5,21 @@ NOW=$(shell date +"%m_%d_%y_%H_%M_%S")
 PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 
 #-------------------------------------------------------------------------------
+# all / build plugins
+#-------------------------------------------------------------------------------
+all: build-ycm
+
+build-ycm:
+	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
+	then \
+		git clone https://github.com/Valloric/YouCompleteMe.git \
+		$(PWD)/dot_vim/bundle/YouCompleteMe; \
+	fi
+	cd $(PWD)/dot_vim/bundle/YouCompleteMe && \
+		git submodule update --init --recursive
+	cd $(PWD)/dot_vim/bundle/YouCompleteMe && ./install.sh --clang-completer
+
+#-------------------------------------------------------------------------------
 # update
 #-------------------------------------------------------------------------------
 update:
@@ -43,10 +58,15 @@ install:
 	@echo ": done"
 
 #-------------------------------------------------------------------------------
-# clean
+# cleans
 #-------------------------------------------------------------------------------
 clean:
-	@echo -n "Clean 'vim' configuration..."
+	@echo -n "Clean 'vim' built in plugins..."
+	@rm -rf dot_vim/bundle/YouCompleteMe
+	@echo ": done"
+
+clean-backups:
+	@echo -n "Clean 'vim' backup configurations..."
 	@find $(HOME)/.* -maxdepth 1 -type d -name ".vim_*_*_*_*_*_*" | xargs rm -rf
 	@find $(HOME)/.* -maxdepth 1 -type f -name ".vimrc_*_*_*_*_*_*" | xargs rm -f
 	@echo ": done"
