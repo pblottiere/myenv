@@ -7,23 +7,31 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 #-------------------------------------------------------------------------------
 # all / build plugins
 #-------------------------------------------------------------------------------
-all: build-ycm
+all: build-ycm build-autoclose
 
 build-ycm:
 	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
 	then \
 		git clone https://github.com/Valloric/YouCompleteMe.git \
-		$(PWD)/dot_vim/bundle/YouCompleteMe; \
+			$(PWD)/dot_vim/bundle/YouCompleteMe; \
 	fi
 	cd $(PWD)/dot_vim/bundle/YouCompleteMe && \
 		git submodule update --init --recursive
 	cd $(PWD)/dot_vim/bundle/YouCompleteMe && ./install.sh --clang-completer
+
+build-autoclose:
+	if [ ! -d $(PWD)/dot_vim/bundle/vim-autoclose ]; \
+	then \
+		git clone https://github.com/Townk/vim-autoclose \
+			$(PWD)/dot_vim/bundle/vim-autoclose; \
+	fi
 
 #-------------------------------------------------------------------------------
 # update
 #-------------------------------------------------------------------------------
 update:
 	@echo -n "Update 'vim' configuration..."
+	@rm -rf dot_vim/*
 	@cp -r $(HOME)/.vim/* dot_vim/
 	@cp $(HOME)/.vimrc dot_vimrc
 	@echo ": done"
