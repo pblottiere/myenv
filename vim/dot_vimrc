@@ -119,10 +119,10 @@ autocmd CompleteDone * pclose
 " folding
 setlocal foldmethod=indent
 setlocal foldcolumn=1
-setlocal foldlevel=1
-setlocal foldlevelstart=1
+setlocal foldlevel=0
+setlocal foldlevelstart=0
 
 autocmd BufRead * set foldmethod=indent
 autocmd BufRead * set foldcolumn=1
-autocmd BufRead * set foldlevel=1
-autocmd BufRead * set foldlevelstart=1
+autocmd BufRead * set foldlevel=0
+autocmd BufRead * set foldlevelstart=0
