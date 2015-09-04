@@ -7,7 +7,7 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 #------------------------------------------------------------------------------
 # all / build plugins
 #------------------------------------------------------------------------------
-all: build-ycm build-autoclose build-indentline
+all: build-ycm build-autoclose build-indentline build-tagbar
 
 build-ycm:
 	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
@@ -29,8 +29,15 @@ build-autoclose:
 build-indentline:
 	if [ ! -d $(PWD)/dot_vim/bundle/indentLine ]; \
 	then \
-	git clone https://github.com/Yggdroot/indentLine \
+		git clone https://github.com/Yggdroot/indentLine \
 			$(PWD)/dot_vim/bundle/indentLine; \
+	fi
+
+build-tagbar:
+	if [ ! -d $(PWD)/dot_vim/bundle/Tagbar ]; \
+	then \
+		git clone https://github.com/vim-scripts/Tagbar \
+			$(PWD)/dot_vim/bundle/Tagbar; \
 	fi
 
 #------------------------------------------------------------------------------
