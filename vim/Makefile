@@ -17,7 +17,8 @@ build-ycm:
 	fi
 	cd $(PWD)/dot_vim/bundle/YouCompleteMe && \
 		git submodule update --init --recursive
-	cd $(PWD)/dot_vim/bundle/YouCompleteMe && ./install.sh --clang-completer
+	cd $(PWD)/dot_vim/bundle/YouCompleteMe && ./install.sh --clang-completer \
+		--system-libclang
 
 build-autoclose:
 	if [ ! -d $(PWD)/dot_vim/bundle/vim-autoclose ]; \
@@ -85,6 +86,9 @@ install:
 clean:
 	@echo -n "Clean 'vim' built in plugins..."
 	@rm -rf dot_vim/bundle/YouCompleteMe
+	@rm -rf dot_vim/bundle/vim-autoclose
+	@rm -rf dot_vim/bundle/indentLine
+	@rm -rf dot_vim/bundle/Tagbar
 	@echo ": done"
 
 clean-backups:
