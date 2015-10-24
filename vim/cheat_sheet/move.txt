@@ -1,0 +1,7 @@
+gg : go to the beginning of the file
+G : go to the end of the file
+b : backward per word (beginning)
+w : forward per word (beginning)
+e : go at the end of the word
+^ : beginning of the line
+$ : end of the line
