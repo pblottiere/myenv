@@ -7,7 +7,7 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 #------------------------------------------------------------------------------
 # all / build plugins
 #------------------------------------------------------------------------------
-all: build-ycm build-autoclose build-indentline build-tagbar build-spell
+all: build-ycm build-autoclose build-indentline build-tagbar build-spell build-nerdtree build-syntastic
 
 build-ycm:
 	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
@@ -52,6 +52,20 @@ build-spell:
 			http://ftp.vim.org/vim/runtime/spell/fr.utf-8.spl; \
 	  	wget  -P $(PWD)/dot_vim/spell \
 			http://ftp.vim.org/vim/runtime/spell/fr.utf-8.sug; \
+ 	fi
+
+build-nerdtree:
+	if [ ! -d $(PWD)/dot_vim/bundle/nerdtree ]; \
+	then \
+		git clone https://github.com/scrooloose/nerdtree.git \
+			$(PWD)/dot_vim/bundle/nerdtree; \
+ 	fi
+
+build-syntastic:
+	if [ ! -d $(PWD)/dot_vim/bundle/syntastic ];\
+	then \
+		git clone https://github.com/scrooloose/syntastic.git \
+			$(PWD)/dot_vim/bundle/syntastic; \
 	fi
 
 #------------------------------------------------------------------------------
@@ -98,10 +112,8 @@ install:
 #------------------------------------------------------------------------------
 clean:
 	@echo -n "Clean 'vim' built in plugins..."
-	@rm -rf dot_vim/bundle/YouCompleteMe
-	@rm -rf dot_vim/bundle/vim-autoclose
-	@rm -rf dot_vim/bundle/indentLine
-	@rm -rf dot_vim/bundle/Tagbar
+	@rm -rf dot_vim/bundle/*
+	@rm -rf dot_vim/spell/*
 	@echo ": done"
 
 clean-backups:
