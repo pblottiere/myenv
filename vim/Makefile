@@ -7,7 +7,7 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 #------------------------------------------------------------------------------
 # all / build plugins
 #------------------------------------------------------------------------------
-all: build-ycm build-autoclose build-indentline build-tagbar
+all: build-ycm build-autoclose build-indentline build-tagbar build-spell
 
 build-ycm:
 	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
@@ -39,6 +39,19 @@ build-tagbar:
 	then \
 		git clone https://github.com/vim-scripts/Tagbar \
 			$(PWD)/dot_vim/bundle/Tagbar; \
+ 	fi
+
+build-spell:
+	if [ ! -d $(PWD)/dot_vim/spell ]; \
+	then \
+		wget -P $(PWD)/dot_vim/spell \
+			http://ftp.vim.org/vim/runtime/spell/fr.latin1.spl; \
+	 	wget  -P $(PWD)/dot_vim/spell \
+			http://ftp.vim.org/vim/runtime/spell/fr.latin1.sug; \
+		wget  -P $(PWD)/dot_vim/spell \
+			http://ftp.vim.org/vim/runtime/spell/fr.utf-8.spl; \
+	  	wget  -P $(PWD)/dot_vim/spell \
+			http://ftp.vim.org/vim/runtime/spell/fr.utf-8.sug; \
 	fi
 
 #------------------------------------------------------------------------------

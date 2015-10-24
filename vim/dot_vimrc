@@ -129,3 +129,8 @@ autocmd BufRead * set foldlevelstart=0
 
 " tagbar
 nnoremap <silent> <c-t> :TagbarToggle<CR>
+nnoremap <silent> <c-j> :TagbarOpen j<CR>
+
+" spell
+nnoremap <silent> <c-f> :set spell spelllang=fr<CR>
+nnoremap <silent> <c-e> :set spell spelllang=en<CR>
