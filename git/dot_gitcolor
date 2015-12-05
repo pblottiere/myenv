@@ -10,11 +10,11 @@ cYellow="\[\033[0;93m\]"	# Yellow
 cBlue="\[\033[0;94m\]"		# Blue
 
 # Various variables you might want for your PS1 prompt instead
-gUserHost=$cBlue"\u@\h"		
-gPath=$cYellow"\w"	
-gEndLine=$cOff" $ " 
+gUserHost=$cBlue"\u@\h"
+gPath=$cYellow"\W"
+gEndLine=$cOff" $ "
 gNoChanges=$cGreen
-gChanged=$cRed	
+gChanged=$cRed
 
 export PS1="${gUserHost}${cOff}:${gPath} "'`git branch &>/dev/null 2>&1;\
 	if [ $? -eq 0 ]; then \
@@ -29,7 +29,7 @@ export PS1="${gUserHost}${cOff}:${gPath} "'`git branch &>/dev/null 2>&1;\
 	fi`'$gEndLine
 
 # Libera as variaveis para não afetar o ambiente externo
-unset cOff	
+unset cOff
 unset cRed
 unset cGreen
 unset cYellow
