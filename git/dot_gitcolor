@@ -1,0 +1,42 @@
+# Lang settings
+gLang="en_US"
+# Reset
+cOff="\[\033[0m\]"			# Text Reset
+
+# High Intensty
+cRed="\[\033[0;91m\]"		# Red
+cGreen="\[\033[0;92m\]"		# Green
+cYellow="\[\033[0;93m\]"	# Yellow
+cBlue="\[\033[0;94m\]"		# Blue
+
+# Various variables you might want for your PS1 prompt instead
+gUserHost=$cBlue"\u@\h"		
+gPath=$cYellow"\w"	
+gEndLine=$cOff" $ " 
+gNoChanges=$cGreen
+gChanged=$cRed	
+
+export PS1="${gUserHost}${cOff}:${gPath} "'`git branch &>/dev/null 2>&1;\
+	if [ $? -eq 0 ]; then \
+		echo $(LANG=$gLang git status 2>/dev/null | grep "nothing to commit" &> /dev/null 2>&1; \
+		if [ "$?" -eq "0" ]; then \
+			# @4 - Clean repository - nothing to commit
+			echo "'$gNoChanges'"$(__git_ps1 "[%s]" 2>/dev/null); \
+		else \
+			# @5 - Changes to working tree
+			echo "'$gChanged'"$(__git_ps1 "[%s]" 2>/dev/null); \
+		fi); \
+	fi`'$gEndLine
+
+# Libera as variaveis para não afetar o ambiente externo
+unset cOff	
+unset cRed
+unset cGreen
+unset cYellow
+unset cBlue
+
+unset gUserHost
+unset gPath
+unset gEndLine
+unset gNoChanges
+unset gChanged
