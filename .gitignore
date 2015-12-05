@@ -1,6 +1,3 @@
 *.swp
 *.pyc
-vim/dot_vim/bundle/YouCompleteMe
-vim/dot_vim/bundle/vim-autoclose
-vim/dot_vim/bundle/indentLine
-vim/dot_vim/bundle/Tagbar
+vim/dot_vim/bundle

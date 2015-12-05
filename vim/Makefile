@@ -7,7 +7,8 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 #------------------------------------------------------------------------------
 # all / build plugins
 #------------------------------------------------------------------------------
-all: build-ycm build-autoclose build-indentline build-tagbar build-spell build-nerdtree build-syntastic
+all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
+	 build-nerdtree build-syntastic build-snippets build-ultisnips
 
 build-ycm:
 	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
@@ -17,8 +18,7 @@ build-ycm:
 	fi
 	cd $(PWD)/dot_vim/bundle/YouCompleteMe && \
 		git submodule update --init --recursive
-	cd $(PWD)/dot_vim/bundle/YouCompleteMe && ./install.sh --clang-completer \
-		--system-libclang
+	cd $(PWD)/dot_vim/bundle/YouCompleteMe && python install.py
 
 build-autoclose:
 	if [ ! -d $(PWD)/dot_vim/bundle/vim-autoclose ]; \
@@ -66,6 +66,20 @@ build-syntastic:
 	then \
 		git clone https://github.com/scrooloose/syntastic.git \
 			$(PWD)/dot_vim/bundle/syntastic; \
+	fi
+
+build-snippets:
+	if [ ! -d $(PWD)/dot_vim/bundle/vim-snippets ] ;\
+	then \
+		git clone https://github.com/honza/vim-snippets \
+			$(PWD)/dot_vim/bundle/vim-snippets; \
+	fi
+
+build-ultisnips:
+	if [ ! -d $(PWD)/dot_vim/bundle/ultisnips ];\
+	then \
+		git clone https://github.com/SirVer/ultisnips \
+			$(PWD)/dot_vim/bundle/ultisnips; \
 	fi
 
 #------------------------------------------------------------------------------
