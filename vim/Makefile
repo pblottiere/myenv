@@ -8,7 +8,15 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 # all / build plugins
 #------------------------------------------------------------------------------
 all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
-	 build-nerdtree build-syntastic build-snippets build-ultisnips
+	 build-nerdtree build-syntastic build-snippets build-ultisnips \
+	 build-airline
+
+build-airline:
+	if [ ! -d $(PWD)/dot_vim/bundle/vim-airline ]; \
+	then \
+		git clone https://github.com/bling/vim-airline \
+			$(PWD)/dot_vim/bundle/vim-airline; \
+	fi
 
 build-ycm:
 	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
@@ -117,6 +125,7 @@ install:
 		mv $(HOME)/.vimrc $(HOME)/.vimrc_$(NOW); \
 	fi
 	@cp dot_vimrc $(HOME)/.vimrc
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.create()"
 	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('VIM')"
 	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_create('VIM')"
 	@echo ": done"
