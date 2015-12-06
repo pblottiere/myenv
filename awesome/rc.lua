@@ -11,6 +11,11 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- tergeist custom BEGIN
+require("obvious.battery")
+require("obvious.wlan")
+-- tergeist custom END
+
 -- Load Debian menu entries
 require("debian.menu")
 
@@ -195,6 +200,12 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+
+    -- tergeist custom BEGIN
+    right_layout:add(obvious.wlan().widget)
+    right_layout:add(obvious.battery())
+    -- tergeist custom END
+
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -450,3 +461,4 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+--
