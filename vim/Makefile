@@ -9,7 +9,7 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 #------------------------------------------------------------------------------
 all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
 	 build-nerdtree build-syntastic build-snippets build-ultisnips \
-	 build-airline
+	 build-airline build-ctrlp
 
 build-airline:
 	if [ ! -d $(PWD)/dot_vim/bundle/vim-airline ]; \
@@ -88,6 +88,13 @@ build-ultisnips:
 	then \
 		git clone https://github.com/SirVer/ultisnips \
 			$(PWD)/dot_vim/bundle/ultisnips; \
+	fi
+
+build-ctrlp:
+	if [ ! -d $(PWD)/dot_vim/bundle/ctrlp.vim ]; \
+	then \
+		git clone https://github.com/kien/ctrlp.vim \
+			$(PWD)/dot_vim/bundle/ctrlp.vim; \
 	fi
 
 #------------------------------------------------------------------------------
