@@ -27,10 +27,15 @@ augroup vimrc_autocmds
 augroup END
 
 " tab => 4 spaces
-filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
+" filetype plugin indent on
+" set tabstop=4
+" set shiftwidth=4
+" set expandtab
 set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
 " no .swp file
 set noswapfile
@@ -49,6 +54,11 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-l> :call NumberToggle()<CR>
+
+" search conf
+set smartcase
+set hlsearch
+nmap <C-b> :noh<CR>
 
 "------------------------------------------------------------------------------
 " plugins
@@ -83,15 +93,11 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" let g:syntastic_warning_symbol = "⚠"
-" let g:syntastic_warning_symbol = "✗"
+" "⚠"
 let g:syntastic_warning_symbol = "●"
-" let g:syntastic_error_symbol = "✗"
-let g:syntastic_error_symbol = "●"
-let g:syntastic_style_warning_symbol = "✗"
+let g:syntastic_error_symbol = "✗"
 let g:syntastic_style_error_symbol = "✗"
-" let g:syntastic_style_warning_symbol = "●"
-" let g:syntastic_style_error_symbol = "●"
+let g:syntastic_style_warning_symbol = "●"
 
 let g:syntastic_enable_signs = 1
 let g:syntastic_always_populate_loc_list = 0
@@ -109,10 +115,11 @@ let g:syntastic_arduino_checkers = ['avrgcc']
 let g:syntastic_arduino_check_header = 1
 
 " you complete me
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf=0
+let g:ycm_use_ultisnips_completer = 1
 
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+nnoremap f :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
 autocmd CompleteDone * pclose
 
@@ -132,11 +139,10 @@ nnoremap <silent> <c-t> :TagbarToggle<CR>
 nnoremap <silent> <c-j> :TagbarOpen j<CR>
 
 " spell
-nnoremap <silent> <c-r> :set spell spelllang=fr<CR>
+nnoremap <silent> <c-e> :set spell spelllang=fr<CR>
 nnoremap <silent> <c-h> :set spell spelllang=en<CR>
 
 " snippets
-let g:ycm_use_ultisnips_completer = 1
 let g:UltiSnipsExpandTrigger="<c-y>"
 
 " airline
@@ -145,9 +151,12 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline_powerline_fonts = 0
-let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 set laststatus=2
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#hunks#enabled=1
 let g:airline#extensions#branch#enabled=1
+
+" a.vim
+map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>

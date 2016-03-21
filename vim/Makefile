@@ -9,7 +9,7 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 #------------------------------------------------------------------------------
 all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
 	 build-nerdtree build-syntastic build-snippets build-ultisnips \
-	 build-airline build-ctrlp
+	 build-airline build-ctrlp build-airline-themes
 
 build-airline:
 	if [ ! -d $(PWD)/dot_vim/bundle/vim-airline ]; \
@@ -19,14 +19,14 @@ build-airline:
 	fi
 
 build-ycm:
-	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
+	if [ ! -d "$(PWD)/dot_vim/bundle/YouCompleteMe" ]; \
 	then \
 		git clone https://github.com/Valloric/YouCompleteMe.git \
 			$(PWD)/dot_vim/bundle/YouCompleteMe; \
 	fi
 	cd $(PWD)/dot_vim/bundle/YouCompleteMe && \
 		git submodule update --init --recursive
-	cd $(PWD)/dot_vim/bundle/YouCompleteMe && python install.py
+	cd $(PWD)/dot_vim/bundle/YouCompleteMe && python install.py --clang-completer
 
 build-autoclose:
 	if [ ! -d $(PWD)/dot_vim/bundle/vim-autoclose ]; \
@@ -95,7 +95,14 @@ build-ctrlp:
 	then \
 		git clone https://github.com/kien/ctrlp.vim \
 			$(PWD)/dot_vim/bundle/ctrlp.vim; \
-	fi
+ 	fi
+
+build-airline-themes:
+	if [ ! -d $(PWD)/dot_vim/bundle/ctrlp.vim ]; \
+	then \
+		git clone https://github.com/vim-airline/vim-airline-themes \
+			$(PWD)/dot_vim/bundle/vim-airline-themes; \
+ 	fi
 
 #------------------------------------------------------------------------------
 # update
