@@ -9,7 +9,7 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 #------------------------------------------------------------------------------
 all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
 	 build-nerdtree build-syntastic build-snippets build-ultisnips \
-	 build-airline build-ctrlp build-airline-themes
+	 build-airline build-ctrlp build-airline-themes build-gnupg
 
 build-airline:
 	if [ ! -d $(PWD)/dot_vim/bundle/vim-airline ]; \
@@ -33,6 +33,16 @@ build-autoclose:
 	then \
 		git clone https://github.com/Townk/vim-autoclose \
 			$(PWD)/dot_vim/bundle/vim-autoclose; \
+	fi
+
+build-gnupg:
+	if [ ! -f $(PWD)/dot_vim/plugin/gnupg.vim ]; \
+	then \
+		git clone https://github.com/jamessan/vim-gnupg \
+			$(PWD)/dot_vim/plugin/vim-gnupg; \
+		mv $(PWD)/dot_vim/plugin/vim-gnupg/plugin/gnupg.vim \
+			$(PWD)/dot_vim/plugin; \
+		rm -rf $(PWD)/dot_vim/plugin/vim-gnupg; \
 	fi
 
 build-indentline:
