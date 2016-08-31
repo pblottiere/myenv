@@ -46,7 +46,8 @@ hi ErrorMsg        guifg=#92C5F7 guibg=#232526 gui=none "ctermfg=red
 hi Exception       guifg=#DAD085               gui=none "ctermfg=red
 hi Float           guifg=#99CC99                        ctermfg=1
 hi FoldColumn      guifg=#465457 guibg=#000000          ctermfg=235 ctermbg=235
-hi Folded          guifg=#465457 guibg=#000000          ctermfg=235 ctermbg=235
+" hi Folded          guifg=#465457 guibg=#000000          ctermfg=235 ctermbg=235
+hi Folded          guifg=#465457 guibg=#000000          ctermfg=235 ctermbg=none
 hi Function        guifg=#DAD085                        ctermfg=74  cterm=none
 hi Identifier      guifg=#B6B7EB                        ctermfg=74  cterm=bold
 hi Ignore          guifg=#808080 guibg=bg               "ctermfg=red
@@ -106,7 +107,8 @@ hi WildMenu        guifg=#66D9EF guibg=#000000              "ctermfg=red
 hi TabLineFill     guifg=#1D1F21 guibg=#1D1F21
 hi TabLine         guibg=#1D1F21 guifg=#808080 gui=none
 
-hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249 ctermbg=235
+hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249 ctermbg=none
+" hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249 ctermbg=235
 hi Comment         guifg=#FFFFFF                        ctermfg=242
 hi CursorLine                    guibg=#293739          ctermfg=none
 hi CursorLineNr    guifg=#B6B7EB               gui=none ctermfg=none
