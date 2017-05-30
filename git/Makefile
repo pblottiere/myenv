@@ -16,6 +16,7 @@ update:
 	@echo -n "Update 'git' configuration..."
 	@cp $(HOME)/.gitconfig dot_gitconfig
 	@cp $(HOME)/.gitcolor dot_gitcolor
+	@cp $(HOME)/.gitcompletion dot_gitcompletion
 	@echo ": done"
 
 #------------------------------------------------------------------------------
@@ -40,11 +41,17 @@ install:
 	then \
 		mv $(HOME)/.gitcolor $(HOME)/.gitcolor_$(NOW); \
 	fi
+	@if [ -f $(HOME)/.gitcompletion ]; \
+	then \
+		mv $(HOME)/.gitcompletion $(HOME)/.gitcompletion_$(NOW); \
+	fi
 	@cp dot_gitconfig $(HOME)/.gitconfig
 	@cp dot_gitcolor $(HOME)/.gitcolor
+	@cp dot_gitcompletion $(HOME)/.gitcompletion
 	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.create()"
 	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('GIT')"
 	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_add('GIT', 'source ~/.gitcolor')"
+	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_add('GIT', 'source ~/.gitcompletion')"
 	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_create('GIT')"
 	@echo ": done"
 
