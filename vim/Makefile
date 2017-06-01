@@ -10,7 +10,7 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
 	 build-nerdtree build-syntastic build-snippets build-ultisnips \
 	 build-airline build-ctrlp build-airline-themes build-gnupg \
-	 build-sleuth
+	 build-sleuth build-gitgutter
 
 build-airline:
 	if [ ! -d $(PWD)/dot_vim/bundle/vim-airline ]; \
@@ -121,6 +121,14 @@ build-sleuth:
 		git clone https://github.com/tpope/vim-sleuth \
 			$(PWD)/dot_vim/bundle/vim-sleuth; \
  	fi
+
+build-gitgutter:
+	if [ ! -d $(PWD)/dot_vim/bundle/vim-gitgutter ]; \
+	then \
+		git clone https://github.com/airblade/vim-gitgutter \
+			$(PWD)/dot_vim/bundle/vim-gitgutter; \
+ 	fi
+
 
 #------------------------------------------------------------------------------
 # update
