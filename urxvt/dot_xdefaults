@@ -3,7 +3,9 @@ urxvt*background: rgba:0000/0000/0200/c800
 ! urxvt*background: rgba:3300/3300/3300/C800
 URxvt.scrollBar: false
 
-URxvt.font:     xft:DejaVu Sans Mono:size=8:antialias=true:pixelsize=11
+! URxvt.font:     xft:DejaVu Sans Mono:size=8:antialias=true:pixelsize=11
+URxvt.font: xft:bitstream vera sans mono:size=14:antialias=true
+URxvt.boldFont: xft:bitstream vera sans mono:bold:size=14:antialias=true
 URxvt.letterSpace: -1
 
 ! Background color
@@ -31,7 +33,7 @@ URxvt*color14: cyan
 URxvt*color15: white
 
 ! font size on the fly
-URxvt.perl-ext-common:  ...,font-size
+URxvt.perl-ext-common:  font-size
 
 URxvt.keysym.C-Up:     perl:font-size:increase
 URxvt.keysym.C-Down:   perl:font-size:decrease

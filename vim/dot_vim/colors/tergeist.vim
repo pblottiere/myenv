@@ -35,10 +35,10 @@ hi iCursor         guifg=#000000 guibg=#F8F8F0          "ctermfg=red
 hi Debug           guifg=#BCA3A3               gui=none "ctermfg=red
 hi Define          guifg=#66D9EF                        "ctermfg=red
 hi Delimiter       guifg=#8F8F8F                        "ctermfg=red
-hi DiffAdd                       guibg=#13354A          "ctermfg=red
-hi DiffChange      guifg=#89807D guibg=#4C4745          "ctermfg=red
-hi DiffDelete      guifg=#960050 guibg=#1E0010          "ctermfg=red
-hi DiffText                      guibg=#4C4745 gui=none "ctermfg=red
+hi DiffAdd                       guibg=#13354A          ctermfg=255 ctermbg=white
+hi DiffChange      guifg=#89807D guibg=#4C4745          ctermfg=255 ctermbg=white
+hi DiffDelete      guifg=#960050 guibg=#1E0010          ctermfg=255 ctermbg=white
+hi DiffText                      guibg=#000000 gui=none ctermfg=255 ctermbg=white
 
 hi Directory       guifg=#AAAAAA               gui=none ctermfg=74 cterm=bold
 hi Error           guifg=#A8FF60 guibg=#1E0010          "ctermfg=red

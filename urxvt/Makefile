@@ -37,10 +37,13 @@ install:
 		mv $(HOME)/.Xdefaults $(HOME)/.Xdefaults_$(NOW); \
 	fi
 	@cp dot_xdefaults $(HOME)/.Xdefaults
+	@cp dot_xdefaults $(HOME)/.Xresources
 	@if [ -f $(HOME)/.urxvt ]; \
 	then \
 		mv $(HOME)/.urxvt $(HOME)/.urxvt_$(NOW); \
 	fi
+	@xrdb $(HOME)/.Xdefaults
+	@xrdb $(HOME)/.Xresources
 	@cp -r dot_urxvt $(HOME)/.urxvt
 	@echo ": done"
 

@@ -3,6 +3,7 @@
 	email = blottiere.paul@gmail.com
 [core]
 	editor = vim
+	excludesfile = /home/blottiere/.gitignore_global
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	st = status
@@ -25,3 +26,7 @@
 	untracked = cyan
 [push]
 	default = simple
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false

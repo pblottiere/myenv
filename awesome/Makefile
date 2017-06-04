@@ -2,6 +2,7 @@
 # const, paths
 #------------------------------------------------------------------------------
 NOW=$(shell date +"%m_%d_%y_%H_%M_%S")
+VERSION=$(shell awesome --version | head -1 | cut -d ' ' -f 2)
 
 #------------------------------------------------------------------------------
 # all
@@ -35,7 +36,7 @@ install:
 		mv $(HOME)/.config/awesome $(HOME)/.config/awesome_$(NOW); \
 	fi
 	@mkdir $(HOME)/.config/awesome
-	@cp rc.lua $(HOME)/.config/awesome/
+	@cp rc-$(VERSION).lua $(HOME)/.config/awesome/rc.lua
 	@cp -r obvious $(HOME)/.config/awesome/
 	@echo ": done"
 

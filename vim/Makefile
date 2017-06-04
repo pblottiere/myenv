@@ -10,7 +10,29 @@ PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
 all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
 	 build-nerdtree build-syntastic build-snippets build-ultisnips \
 	 build-airline build-ctrlp build-airline-themes build-gnupg \
-	 build-sleuth build-gitgutter
+	 build-sleuth build-gitgutter build-conquegdb build-nerdtree-git \
+	 build-fugitive
+
+build-fugitive:
+	if [ ! -d $(PWD)/dot_vim/bundle/tpope/vim-fugitive ]; \
+	then \
+		git clone https://github.com/tpope/vim-fugitive \
+			$(PWD)/dot_vim/bundle/vim-fugitive; \
+	fi
+
+build-conquegdb:
+	if [ ! -d $(PWD)/dot_vim/bundle/Conque-GDB ]; \
+	then \
+		git clone https://github.com/vim-scripts/Conque-GDB \
+			$(PWD)/dot_vim/bundle/Conque-GDB; \
+	fi
+
+build-nerdtree-git:
+	if [ ! -d $(PWD)/dot_vim/bundle/nerdtree-git-plugin ]; \
+	then \
+		git clone https://github.com/Xuyuanp/nerdtree-git-plugin \
+			$(PWD)/dot_vim/bundle/nerdtree-git-plugin; \
+	fi
 
 build-airline:
 	if [ ! -d $(PWD)/dot_vim/bundle/vim-airline ]; \
