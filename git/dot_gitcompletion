@@ -1463,7 +1463,10 @@ _git_difftool ()
 		return
 		;;
 	esac
-	__git_complete_revlist_file
+
+	# __git_complete_revlist_file
+	complete_opt="--modified"
+	__git_complete_index_file "$complete_opt"
 }
 
 __git_fetch_recurse_submodules="yes on-demand no"

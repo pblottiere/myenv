@@ -39,7 +39,13 @@ TODO
 
 ## VCS
 
-TODO
+### Git
+
+````
+$ sudo apt-get instal git
+$ cd git
+$ make install
+````
 
 ## Tools
 

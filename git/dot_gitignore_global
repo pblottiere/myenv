@@ -1,0 +1,9 @@
+.ycm_extra_conf.py
+.ycm_extra_conf.pyc
+.syntastic_cpp.conf
+.syntastic_c.conf
+//build
+build_*
+/build
+__pycache__
+sphinx
