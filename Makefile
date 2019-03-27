@@ -41,9 +41,6 @@ install-vim:
 install-git:
 	@cd git && make install
 
-install-fluxbox:
-	@cd fluxbox && make install
-
 install-urxvt:
 	@cd urxvt && make install
 
@@ -53,7 +50,7 @@ install-svn:
 install-vmail:
 	@cd vmail && make install
 
-install: install-myenvrc install-vim install-git install-fluxbox install-urxvt install-svn install-vmail
+install: install-myenvrc install-vim install-git install-urxvt install-svn install-vmail
 
 #------------------------------------------------------------------------------
 # uninstall
@@ -67,9 +64,6 @@ uninstall-vim:
 uninstall-git:
 	@cd git && make uninstall
 
-uninstall-fluxbox:
-	@cd fluxbox && make uninstall
-
 uninstall-urxvt:
 	@cd urxvt && make uninstall
 
@@ -79,7 +73,7 @@ uninstall-svn:
 uninstall-vmail:
 	@cd vmail && make uninstall
 
-uninstall: uninstall-myenvrc uninstall-vim uninstall-git uninstall-fluxbox uninstall-urxvt uninstall-svn uinstall-vmail
+uninstall: uninstall-myenvrc uninstall-vim uninstall-git uninstall-urxvt uninstall-svn uinstall-vmail
 
 #------------------------------------------------------------------------------
 # clean

@@ -1,10 +1,46 @@
-MyEnv
-=====
+# MyEnv
 
-Repository storing my working environment:
-- NERDTree plugin
-- vimrc and colorscheme
-- urxvt configuration
-- gitconfig
-- fluxbox keys
-- ...
+## VIM
+
+Plugins:
+- ycm: Code completion engine
+- autoclose: Auto-close chars feature
+- indentline: Display vertical lines at each indentation level
+- tagbar: Display tags of the current file ordered by scope
+- spell: Spell chacking
+- nerdtree: Tree explorer
+- syntastic: Syntax checking
+- snippets: Default snippets
+- ultisnips: More snippets
+- ctrlp: Fuzzy file finder
+- airline: Status bar
+- airline-themes: Airline themes
+- gnupg: Editing of gpg encrypted files
+- sleuth: Automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
+- gitgutter: Shows which lines have been added, modified, or removed (sign columns)
+- conquegdb: GDB interface
+- nerdtree-git: Show git status in nerdtree
+- fugitive: Git wrapper to use git from vim
+
+````
+$ sudo apt-get install exuberant-ctags cmake g++ python-dev
+$ cd vim
+$ make
+$ make install
+````
+
+## Window Manager
+
+TODO
+
+## Terminal
+
+TODO
+
+## VCS
+
+TODO
+
+## Tools
+
+vmail / gcalcli

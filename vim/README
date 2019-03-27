@@ -1,4 +1,0 @@
-Dependencies
-------------
-
-    sudo apt-get install exuberant-ctags cmake g++ python-dev

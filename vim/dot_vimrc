@@ -6,6 +6,9 @@ syntax on
 set t_Co=256
 colorscheme tergeist
 
+" do not interpret latex symbols
+let g:tex_conceal = ""
+
 " windows
 map vsplit vs
 
@@ -32,8 +35,8 @@ augroup END
 " set shiftwidth=4
 " set expandtab
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
@@ -115,6 +118,7 @@ let g:syntastic_arduino_checkers = ['avrgcc']
 let g:syntastic_arduino_check_header = 1
 
 " you complete me
+set completeopt-=preview
 let g:ycm_confirm_extra_conf=0
 let g:ycm_use_ultisnips_completer = 1
 
@@ -161,6 +165,6 @@ let g:airline#extensions#branch#enabled=1
 " a.vim
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
-" conque gdb
+" ConqueGDB
 let g:ConqueTerm_StartMessages = 1
 let g:ConqueTerm_CloseOnEnd = 1

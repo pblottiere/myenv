@@ -1,12 +1,9 @@
-#------------------------------------------------------------------------------
-# const, paths
-#------------------------------------------------------------------------------
-NOW=$(shell date +"%m_%d_%y_%H_%M_%S")
-PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../scripts
+install:
+	@echo -n "Install 'vim' configuration..."
+	@ln -sf $(PWD)/dot_vim $(HOME)/.vim
+	@ln -sf $(PWD)/dot_vimrc $(HOME)/.vimrc
+	@echo ": done"
 
-#------------------------------------------------------------------------------
-# all / build plugins
-#------------------------------------------------------------------------------
 all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
 	 build-nerdtree build-syntastic build-snippets build-ultisnips \
 	 build-airline build-ctrlp build-airline-themes build-gnupg \
@@ -150,59 +147,3 @@ build-gitgutter:
 		git clone https://github.com/airblade/vim-gitgutter \
 			$(PWD)/dot_vim/bundle/vim-gitgutter; \
  	fi
-
-
-#------------------------------------------------------------------------------
-# update
-#------------------------------------------------------------------------------
-update:
-	@echo -n "Update 'vim' configuration..."
-	@rm -rf dot_vim/*
-	@cp -r $(HOME)/.vim/* dot_vim/
-	@cp $(HOME)/.vimrc dot_vimrc
-	@echo ": done"
-
-#------------------------------------------------------------------------------
-# uninstall
-#------------------------------------------------------------------------------
-uninstall:
-	@echo -n "Uninstall 'vim' configuration..."
-	@rm -f $(HOME)/.vimrc
-	@rm -rf $(HOME)/.vim
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('VIM')"
-	@echo ": done"
-
-#------------------------------------------------------------------------------
-# install
-#------------------------------------------------------------------------------
-install:
-	@echo -n "Install 'vim' configuration..."
-	@if [ -d $(HOME)/.vim ]; \
-	then \
-		mv $(HOME)/.vim $(HOME)/.vim_$(NOW); \
-	fi
-	@cp -r dot_vim $(HOME)/.vim
-	@if [ -f $(HOME)/.vimrc ]; \
-	then \
-		mv $(HOME)/.vimrc $(HOME)/.vimrc_$(NOW); \
-	fi
-	@cp dot_vimrc $(HOME)/.vimrc
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.create()"
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('VIM')"
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_create('VIM')"
-	@echo ": done"
-
-#------------------------------------------------------------------------------
-# cleans
-#------------------------------------------------------------------------------
-clean:
-	@echo -n "Clean 'vim' built in plugins..."
-	@rm -rf dot_vim/bundle/*
-	@rm -rf dot_vim/spell/*
-	@echo ": done"
-
-clean-backups:
-	@echo -n "Clean 'vim' backup configurations..."
-	@find $(HOME)/.* -maxdepth 1 -type d -name ".vim_*_*_*_*_*_*" | xargs rm -rf
-	@find $(HOME)/.* -maxdepth 1 -type f -name ".vimrc_*_*_*_*_*_*" | xargs rm -f
-	@echo ": done"
