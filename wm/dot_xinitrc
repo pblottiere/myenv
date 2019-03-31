@@ -1,0 +1,6 @@
+# xset r rate 250 60                          # keyboard repeat delay and rate
+# xsetroot -solid darkgrey                    # set root window background
+setxkbmap fr
+feh --bg-scale /home/blottiere/.config/background/batman0.jpg &
+(conky | while read LINE; do xsetroot -name "$LINE"; done) &
+exec $MYENV_PATH/wm/dwm/dwm > ~/dwm.log 2>&1

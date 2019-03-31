@@ -1,5 +1,19 @@
 # MyEnv
 
+First of all:
+
+````
+$ sudo apt-get install git
+$ git clone https://github.com/pblottiere/myenv
+````
+
+To install everything:
+
+````
+$ sudo apt-get install make
+$ make install
+````
+
 ## VIM
 
 Plugins:
@@ -22,6 +36,8 @@ Plugins:
 - nerdtree-git: Show git status in nerdtree
 - fugitive: Git wrapper to use git from vim
 
+To compile plugins and install `~/.vimrc` and `~/.vim` directory:
+
 ````
 $ sudo apt-get install exuberant-ctags cmake g++ python-dev
 $ cd vim
@@ -31,7 +47,13 @@ $ make install
 
 ## Window Manager
 
-TODO
+To compile dwm and install `~/.conkyrc` and `~/.xinitrc`:
+
+````
+$ cd wm
+$ make
+$ make install
+````
 
 ## Terminal
 
@@ -40,6 +62,9 @@ TODO
 ## VCS
 
 ### Git
+
+To install `~/.gitconfig`, `~/.gitcolor`, `~/.gitcompletion` and
+`~/.gitignore_global`:
 
 ````
 $ sudo apt-get instal git

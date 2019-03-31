@@ -4,32 +4,6 @@
 PYDIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/scripts
 
 #------------------------------------------------------------------------------
-# deps
-#------------------------------------------------------------------------------
-deps:
-	@apt-get install make
-
-#------------------------------------------------------------------------------
-# update
-#------------------------------------------------------------------------------
-update-vim:
-	@cd vim && make update
-
-update-git:
-	@cd git && make update
-
-update-urxvt:
-	@cd urxvt && make update
-
-update-svn:
-	@cd svn && make update
-
-update-vmail:
-	@cd vmail && make update
-
-update: update-vim update-git update-urxvt update-svn update-vmail
-
-#------------------------------------------------------------------------------
 # install
 #------------------------------------------------------------------------------
 install-myenvrc:
@@ -51,46 +25,3 @@ install-vmail:
 	@cd vmail && make install
 
 install: install-myenvrc install-vim install-git install-urxvt install-svn install-vmail
-
-#------------------------------------------------------------------------------
-# uninstall
-#------------------------------------------------------------------------------
-uninstall-myenvrc:
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.delete()"
-
-uninstall-vim:
-	@cd vim && make uninstall
-
-uninstall-git:
-	@cd git && make uninstall
-
-uninstall-urxvt:
-	@cd urxvt && make uninstall
-
-uninstall-svn:
-	@cd svn && make uninstall
-
-uninstall-vmail:
-	@cd vmail && make uninstall
-
-uninstall: uninstall-myenvrc uninstall-vim uninstall-git uninstall-urxvt uninstall-svn uinstall-vmail
-
-#------------------------------------------------------------------------------
-# clean
-#------------------------------------------------------------------------------
-clean-vim:
-	@cd vim && make clean
-
-clean-git:
-	@cd git && make clean
-
-clean-urxvt:
-	@cd urxvt && make clean
-
-clean-svn:
-	@cd svn && make clean
-
-clean-vmail:
-	@cd vmail && make clean
-
-clean: clean-vim clean-git clean-urxvt clean-svn clean-vmail
