@@ -1,6 +1,8 @@
 "------------------------------------------------------------------------------
 " general
 "------------------------------------------------------------------------------
+set mouse=a
+
 " syntax highlighting and colors
 syntax on
 set t_Co=256
@@ -153,6 +155,7 @@ let g:UltiSnipsExpandTrigger="<c-y>"
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+" let g:Powerline_symbols = 'unicode'
 let g:airline_symbols.space = "\ua0"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 0
