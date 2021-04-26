@@ -15,13 +15,4 @@ install-vim:
 install-git:
 	@cd git && make install
 
-install-urxvt:
-	@cd urxvt && make install
-
-install-svn:
-	@cd svn && make install
-
-install-vmail:
-	@cd vmail && make install
-
-install: install-myenvrc install-vim install-git install-urxvt install-svn install-vmail
+install: install-myenvrc install-vim install-git
