@@ -1,0 +1,14 @@
+# keyboard layout
+setxkbmap fr
+
+# transparency
+compton &
+
+# background
+feh --bg-scale $HOME/.config/images/yoda.jpg
+
+# screensaver
+xautolock -time 2 -locker "i3lock -i '$HOME/.config/images/dv.png'" &
+
+# i3
+exec i3

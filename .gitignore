@@ -1,7 +1,6 @@
 *.swp
 *.pyc
 vim/dot_vim/bundle
-awesome/obvious
 bin/YCM-Generator
-bin/gcalcli
 vim/dot_vim/plugin/gnupg.vim
+wm/polybar
