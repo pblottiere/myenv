@@ -10,7 +10,18 @@ $ git clone https://github.com/pblottiere/myenv
 To install everything:
 
 ````
-$ sudo apt-get install make
+$ sudo pacman -S make
+$ make install
+````
+
+## Git
+
+To install `~/.gitconfig`, `~/.gitcolor`, `~/.gitcompletion` and
+`~/.gitignore_global`:
+
+````
+$ sudo pacman -S git
+$ cd git
 $ make install
 ````
 
@@ -39,17 +50,18 @@ Plugins:
 To compile plugins and install `~/.vimrc` and `~/.vim` directory:
 
 ````
-$ sudo apt-get install exuberant-ctags cmake g++ python-dev
+$ sudo pacman -S TODO
 $ cd vim
 $ make
 $ make install
 ````
 
-## Window Manager
+## WM
 
-To compile dwm and install `~/.conkyrc` and `~/.xinitrc`:
+To compile and install the window manager environment (`i3`, `polybar`, ...):
 
-````
+```` bash
+$ sudo pacman -S awesome-terminal-fonts
 $ cd wm
 $ make
 $ make install
@@ -57,21 +69,19 @@ $ make install
 
 ## Terminal
 
-TODO
+To edit EET file:
 
-## VCS
-
-### Git
-
-To install `~/.gitconfig`, `~/.gitcolor`, `~/.gitcompletion` and
-`~/.gitignore_global`:
-
-````
-$ sudo apt-get instal git
-$ cd git
-$ make install
+```` bash
+$ EDITOR=vim vieet base.cfg config
 ````
 
 ## Tools
 
-vmail / gcalcli
+To install various tools like:
+
+- `bashtop`
+
+
+```` bash
+TODO
+````
