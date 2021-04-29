@@ -32,3 +32,5 @@
 	prompt = false
 [http]
 	sslVerify = false
+[includeIf "gitdir:~/devel/hytech/"]
+	path = ~/.gitconfig-hytech
