@@ -15,9 +15,9 @@ group "Color_Scheme" struct {
     }
     group "bg" struct {
         group "Color" struct {
-            value "r" uchar: 30;
-            value "g" uchar: 30;
-            value "b" uchar: 30;
+            value "r" uchar: 32;
+            value "g" uchar: 32;
+            value "b" uchar: 32;
             value "a" uchar: 255;
         }
     }
@@ -153,9 +153,9 @@ group "Color_Scheme" struct {
             }
             group "blue" struct {
                 group "Color" struct {
-                    value "r" uchar: 0;
+                    value "r" uchar: 95;
                     value "g" uchar: 175;
-                    value "b" uchar: 255;
+                    value "b" uchar: 215;
                     value "a" uchar: 255;
                 }
             }
@@ -245,9 +245,9 @@ group "Color_Scheme" struct {
             }
             group "blue" struct {
                 group "Color" struct {
-                    value "r" uchar: 0;
+                    value "r" uchar: 95;
                     value "g" uchar: 175;
-                    value "b" uchar: 255;
+                    value "b" uchar: 215;
                     value "a" uchar: 255;
                 }
             }

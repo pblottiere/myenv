@@ -26,10 +26,10 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " 80 columns
 " set colorcolumn=81
-augroup vimrc_autocmds
-    autocmd BufEnter * highlight OverLength ctermbg=black guibg=#111111
-    autocmd BufEnter * match OverLength /\%81v.*/
-augroup END
+" augroup vimrc_autocmds
+"     autocmd BufEnter * highlight OverLength ctermbg=249
+"     autocmd BufEnter * match OverLength /\%81v.*/
+" augroup END
 
 " tab => 4 spaces
 " filetype plugin indent on
