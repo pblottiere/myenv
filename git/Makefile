@@ -6,9 +6,5 @@ install:
 	@ln -sf $(PWD)/dot_gitcolor $(HOME)/.gitcolor
 	@ln -sf $(PWD)/dot_gitcompletion $(HOME)/.gitcompletion
 	@ln -sf $(PWD)/dot_gitignore_global $(HOME)/.gitignore_global
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.create()"
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_delete('GIT')"
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_add('GIT', 'source ~/.gitcolor')"
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_add('GIT', 'source ~/.gitcompletion')"
-	@PYTHONPATH=$(PYDIR) python -c "import myenvrc; myenvrc.part_create('GIT')"
+	@ln -sf $(PWD)/dot_git_prompt $(HOME)/.git-prompt.sh
 	@echo ": done"

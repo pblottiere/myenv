@@ -14,112 +14,162 @@ if version > 580
 endif
 let g:colors_name="tergeist"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " blue : 74
-" green : 77
-" purple : 135
-" orange : 209
 " dark dark grey : 233
-" dark grey : 239
 " background : 235
 " light grey : 249
-" pink : 13
 
-hi Boolean         guifg=#99CC99                        ctermfg=249
-hi Character       guifg=#A8FF60                        ctermfg=249 cterm=italic
-hi Number          guifg=#99CC99                        ctermfg=249
-hi String          guifg=#A8FF60                        ctermfg=249 cterm=italic
-hi Conditional     guifg=#92C5F7               gui=none ctermfg=249
-hi Constant        guifg=#99CC99               gui=none ctermfg=249
-hi Cursor          guifg=#000000 guibg=#F8F8F0          ctermfg=74
-hi iCursor         guifg=#000000 guibg=#F8F8F0          ctermfg=74
-hi Debug           guifg=#BCA3A3               gui=none ctermfg=74
-hi Define          guifg=#66D9EF                        ctermfg=74
-hi Delimiter       guifg=#8F8F8F                        ctermfg=74
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Undetermined
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi Constant       ctermfg=249
+hi Cursor         ctermfg=74
+hi iCursor        ctermfg=74
+hi Debug          ctermfg=74
+hi Define         ctermfg=green
+hi Delimiter      ctermfg=green
 
-hi DiffAdd                       guibg=#13354A          ctermfg=255
-hi DiffChange      guifg=#89807D guibg=#4C4745          ctermfg=255
-hi DiffDelete      guifg=#960050 guibg=#1E0010          ctermfg=255
-hi DiffText                      guibg=#000000 gui=none ctermfg=255
+hi DiffAdd        ctermfg=255
+hi DiffChange     ctermfg=255
+hi DiffDelete     ctermfg=255
+hi DiffText       ctermfg=255
 
-hi Directory       guifg=#AAAAAA               gui=none ctermfg=74 cterm=bold
-hi Error           guifg=#A8FF60 guibg=#1E0010          "ctermfg=74
-hi ErrorMsg        guifg=#92C5F7 guibg=#232526 gui=none "ctermfg=74
-hi Exception       guifg=#DAD085               gui=none "ctermfg=74
-hi Float           guifg=#99CC99                        ctermfg=249
-hi FoldColumn      guifg=#465457 guibg=#000000          ctermfg=235 ctermbg=235
-" hi Folded          guifg=#465457 guibg=#000000          ctermfg=235 ctermbg=235
-hi Folded          guifg=#465457 guibg=#000000          ctermfg=242 ctermbg=none
-hi Function        guifg=#DAD085                        ctermfg=74  cterm=italic
-hi Identifier      guifg=#B6B7EB                        ctermfg=74  cterm=bold
-hi Ignore          guifg=#808080 guibg=bg               "ctermfg=74
-hi IncSearch       guifg=#C4BE89 guibg=#000000          "ctermfg=74
+hi Directory      ctermfg=green cterm=bold
+hi Error          ctermfg=green
+hi ErrorMsg       ctermfg=green
+hi Exception      ctermfg=green
+hi FoldColumn     ctermfg=235 ctermbg=235
 
-hi Keyword         guifg=#92C5F7               gui=none ctermfg=74
-hi Label           guifg=#A8FF60               gui=none ctermfg=74
-hi Macro           guifg=#C4BE89               gui=none ctermfg=74
-hi SpecialKey      guifg=#66D9EF               gui=none ctermfg=74
+hi Folded         ctermfg=242 ctermbg=none
+hi Ignore         ctermfg=green
+hi IncSearch      ctermfg=green
 
-hi MatchParen      guifg=#B7B9B8 guibg=#444444 gui=none "ctermfg=74
-hi ModeMsg         guifg=#A8FF60                        "ctermfg=74
-hi MoreMsg         guifg=#A8FF60                        "ctermfg=74
-hi Operator        guifg=#92C5F7                        ctermfg=74
+hi Keyword        ctermfg=green
+
+hi SpecialKey     ctermfg=green
+
+hi MatchParen     ctermfg=green
+hi ModeMsg        ctermfg=green
+hi MoreMsg        ctermfg=green
 
 " complete menu
-hi Pmenu           guifg=#66D9EF guibg=#000000          "ctermfg=74
-hi PmenuSel                      guibg=#808080          "ctermfg=74
-hi PmenuSbar                     guibg=#080808          "ctermfg=74
-hi PmenuThumb      guifg=#66D9EF                        "ctermfg=74
+hi Pmenu          ctermfg=red
+hi PmenuSel       ctermfg=red
+hi PmenuSbar      ctermfg=red
+hi PmenuThumb     ctermfg=red
 
-hi PreCondit       guifg=#DAD085               gui=none ctermfg=74
-hi PreProc         guifg=#DAD085                        ctermfg=74
-hi Question        guifg=#66D9EF
-hi Repeat          guifg=#92C5F7               gui=none
-hi Search          guifg=#000000 guibg=#B4EC85
+hi Question       ctermfg=red
+hi Search         ctermfg=red
+
 " marks
-hi SignColumn      guifg=#DAD085 guibg=#232526          "ctermfg=74
-hi SpecialChar     guifg=#92C5F7               gui=none "ctermfg=74
-hi SpecialComment  guifg=#7C7C7C               gui=none "ctermfg=74
-hi Special         guifg=#66D9EF guibg=bg      gui=none ctermfg=74
+hi SignColumn     ctermfg=74
+hi SpecialChar    ctermfg=74
+hi SpecialComment ctermfg=74
 if has("spell")
-    hi SpellBad    guisp=#FF0000 gui=undercurl
-    hi SpellCap    guisp=#7070F0 gui=undercurl
-    hi SpellLocal  guisp=#70F0F0 gui=undercurl
-    hi SpellRare   guisp=#FFFFFF gui=undercurl
+    hi SpellBad   ctermfg=74
+    hi SpellCap   ctermfg=74
+    hi SpellLocal ctermfg=74
+    hi SpellRare  ctermfg=74
 endif
-hi Statement       guifg=#92C5F7               gui=none ctermfg=249
-hi StatusLine      guifg=#455354 guibg=fg      gui=none ctermfg=74
-hi StatusLineNC    guifg=#808080 guibg=#080808          ctermfg=74
-hi StorageClass    guifg=#B6B7EB               gui=none ctermfg=249
-hi Structure       guifg=#66D9EF                        ctermfg=74
-hi Tag             guifg=#92C5F7               gui=none ctermfg=74
-hi Title           guifg=#B6B7EB               gui=none ctermfg=74
-hi Todo            guifg=#FFFFFF               gui=none ctermfg=242 ctermbg=none
 
-hi Typedef         guifg=#66D9EF                        ctermfg=249
-hi Type            guifg=#66D9EF               gui=none ctermfg=249
-hi Underlined      guifg=#808080               gui=underline
+hi StatusLine     ctermfg=red
+hi StatusLineNC   ctermfg=74
 
-hi VertSplit       guifg=#808080 guibg=#080808 ctermbg=none ctermfg=234
-hi VisualNOS                     guibg=#403D3D              "ctermfg=74
-hi Visual                        guibg=#403D3D              "ctermfg=235
-hi WarningMsg      guifg=#FFFFFF guibg=#333333              "ctermfg=74
-hi WildMenu        guifg=#66D9EF guibg=#000000              "ctermfg=74
+hi Tag            ctermfg=red
+hi Title          ctermfg=74
+hi Todo           ctermfg=242 ctermbg=none
 
-hi TabLineFill     guifg=#1D1F21 guibg=#1D1F21
-hi TabLine         guibg=#1D1F21 guifg=#808080 gui=none
+hi Underlined     ctermfg=234
 
-hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249 ctermbg=none cterm=None
-" hi Normal          guifg=#F8F8F2 guibg=#1D1F21          ctermfg=249 ctermbg=235
-hi Comment         guifg=#FFFFFF                        ctermfg=242 cterm=italic
-hi CursorLine                    guibg=#293739          ctermfg=none
-hi CursorLineNr    guifg=#B6B7EB               gui=none ctermfg=none
-hi CursorColumn                  guibg=#293739          ctermfg=none
-hi ColorColumn                   guibg=#232526          ctermbg=232
-hi LineNr          guifg=#465457 guibg=#232526          ctermfg=74
-hi NonText         guifg=#465457                        ctermfg=none
-hi SpecialKey      guifg=#465457                        ctermfg=none
+hi VertSplit      ctermfg=234
+hi VisualNOS      ctermfg=74
+hi Visual         ctermfg=235
+hi WarningMsg     ctermfg=74
+hi WildMenu       ctermfg=74
 
+hi TabLineFill    ctermfg=74
+hi TabLine        ctermfg=74
+
+hi Normal         ctermfg=249 ctermbg=none cterm=None
+hi Comment        ctermfg=242 cterm=italic
+hi CursorLine     ctermfg=none
+hi CursorLineNr   ctermfg=none
+hi CursorColumn   ctermfg=none
+hi ColorColumn    ctermbg=232
+hi LineNr         ctermfg=74
+hi NonText        ctermfg=none
+hi SpecialKey     ctermfg=none
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" language
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" yml identifier
+hi Identifier     ctermfg=74  cterm=bold
+
+" C++: for
+hi Repeat          ctermfg=249
+
+" C++: functions
+hi Function     ctermfg=74      cterm=italic
+
+" C++: float
+hi Float    ctermfg=249
+
+" C++: "XXX", <XXX>
+hi String       ctermfg=249     cterm=italic
+
+" C++: number
+hi Number       ctermfg=249
+
+" C++: 'X'
+hi Character        ctermfg=249     cterm=italic
+
+" C++: true, false
+hi Boolean         ctermfg=249
+
+" C++: if/else, switch
+hi Conditional     ctermfg=249
+
+" C++: case
+hi Label           ctermfg=74
+
+" C++: #define
+hi Macro           ctermfg=74
+
+" C++: const_iterator, unique_ptr,
+" QGIS: extent
+hi Typedef         ctermfg=249
+
+" C++: auto, int, bool, void, double, ...
+hi Type            ctermfg=249
+
+" C++: const,
+hi StorageClass    ctermfg=249
+
+" C++: typedef
+hi Structure       ctermfg=249
+
+" C++: #if/#endif
+hi PreCondit       ctermfg=74
+
+" C++: #include
+hi PreProc         ctermfg=74
+
+" C++: new, this, delete, return, break, continue, static_cast
+hi Statement       ctermfg=249
+
+" Python: not, in
+hi Operator       ctermfg=249
+
+" Python: '\n'
+hi Special        ctermfg=249
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi SyntasticErrorLine ctermbg=none ctermfg=none
 hi SyntasticWarningLine ctermbg=none ctermfg=none
 hi SyntasticStyleErrorLine ctermbg=none ctermfg=none
@@ -132,10 +182,11 @@ hi SyntasticStyleWarningSign ctermbg=none ctermfg=172
 
 hi SignColumn ctermbg=none
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YCM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi Pmenu ctermfg=74 ctermbg=233 guifg=#ffffff guibg=#0000ff
 
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
-

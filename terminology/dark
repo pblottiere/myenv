@@ -261,9 +261,9 @@ group "Color_Scheme" struct {
             }
             group "cyan" struct {
                 group "Color" struct {
-                    value "r" uchar: 70;
-                    value "g" uchar: 164;
-                    value "b" uchar: 0;
+                    value "r" uchar: 60;
+                    value "g" uchar: 102;
+                    value "b" uchar: 166;
                     value "a" uchar: 255;
                 }
             }

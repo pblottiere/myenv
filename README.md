@@ -25,6 +25,20 @@ $ cd git
 $ make install
 ````
 
+Then edit your `~/.bashrc` with:
+
+```` bash
+source ~/.gitcompletion
+source ~/.git-prompt.sh
+source ~/.gitcolor
+
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+
+PROMPT_COMMAND='__git_ps1 "" "\[\033[38;5;074m\]\W>\[\033[0m\] "'
+````
+
 ## VIM
 
 Plugins:
