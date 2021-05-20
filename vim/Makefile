@@ -128,7 +128,7 @@ build-ctrlp:
  	fi
 
 build-airline-themes:
-	if [ ! -d $(PWD)/dot_vim/bundle/ctrlp.vim ]; \
+	if [ ! -d $(PWD)/dot_vim/bundle/vim-airline-themes ]; \
 	then \
 		git clone https://github.com/vim-airline/vim-airline-themes \
 			$(PWD)/dot_vim/bundle/vim-airline-themes; \
