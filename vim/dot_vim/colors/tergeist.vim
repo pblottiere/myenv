@@ -95,13 +95,13 @@ hi TabLine        ctermfg=74
 
 hi Normal         ctermfg=249 ctermbg=none cterm=None
 hi Comment        ctermfg=242 cterm=italic
-hi CursorLine     ctermfg=none
-hi CursorLineNr   ctermfg=none
-hi CursorColumn   ctermfg=none
+hi CursorLine     ctermfg=yellow
+hi CursorLineNr   ctermfg=yellow
+hi CursorColumn   ctermfg=yellow
 hi ColorColumn    ctermbg=232
 hi LineNr         ctermfg=74
-hi NonText        ctermfg=none
-hi SpecialKey     ctermfg=none
+hi NonText        ctermfg=yellow
+hi SpecialKey     ctermfg=yellow
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " language
@@ -166,6 +166,34 @@ hi Operator       ctermfg=249
 
 " Python: '\n'
 hi Special        ctermfg=249
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi markdownLinkText ctermfg=249
+" hi markdownBlockquote
+" hi markdownBold
+" hi markdownCode
+" hi markdownCodeBlock
+" hi markdownCodeDelimiter
+" hi markdownH1
+" hi markdownH2
+" hi markdownH3
+" hi markdownH4
+" hi markdownH5
+" hi markdownH6
+" hi markdownHeadingDelimiter
+" hi markdownHeadingRule
+" hi markdownId
+" hi markdownIdDeclaration
+" hi markdownIdDelimiter
+" hi markdownItalic
+" hi markdownLinkDelimiter
+" hi markdownLinkText
+" hi markdownListMarker
+" hi markdownOrderedListMarker
+" hi markdownRule
+" hi markdownUrl
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic

@@ -2,13 +2,13 @@
 setxkbmap fr
 
 # transparency
-compton &
+# compton &
 
 # background
-feh --bg-scale $HOME/.config/images/yoda.jpg
+feh --bg-scale $HOME/.config/images/ds.png
 
 # screensaver
-xautolock -time 2 -locker "i3lock -i '$HOME/.config/images/dv.png'" &
+xautolock -time 2 -locker "i3lock -i '$HOME/.config/images/ds.png'" &
 
 # i3
 exec i3
