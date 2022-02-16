@@ -1,11 +1,12 @@
 #include QMK_KEYBOARD_H
 
 #define BLUE MO(_BLUE)
-#define MT_TAB MT(MOD_LSFT, KC_TAB)
+#define M_TAB MT(MOD_LSFT, KC_TAB)
 
 enum custom_keycodes {
     M_GUI,
-    _GREEN,
+    M_GREEN,
+    M_BSDEL,
 };
 
 enum layers {
@@ -27,7 +28,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
-    case _GREEN:
+    case M_GREEN:
     {
       if(record->event.pressed){
         layer_on(_BLUE);
@@ -37,6 +38,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_mods(MOD_LSFT);
       }
       return false;
+    }
+    // BACKSPACE or DEL with SHIFT modifier
+    case M_BSDEL:
+    {
+      uint8_t temp_mods = get_mods();
+      uint8_t kc = KC_BSPC;
+
+      if (keyboard_report->mods & MOD_MASK_SHIFT) {
+        clear_mods();
+        kc = KC_DEL;
+      }
+
+      if (record->event.pressed)
+        register_code(kc);
+      else
+        unregister_code(kc);
+
+      set_mods(temp_mods);
     }
   }
   return true;
@@ -56,10 +75,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------------'
  */
   [_RED] = LAYOUT_ortho_4x12(
-    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    MT_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_CAPS,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    M_BSDEL,
+    M_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
     KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
-    KC_LCTL, M_GUI,   KC_LGUI, BLUE,    _GREEN,  KC_SPC,  KC_SPC,  KC_ALGR, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_LCTL, M_GUI,   KC_LGUI, BLUE,    M_GREEN,  KC_SPC,  KC_SPC,  KC_ALGR, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 /* Blue
