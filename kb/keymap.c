@@ -6,7 +6,8 @@
 enum custom_keycodes {
     M_GUI,
     M_GREEN,
-    M_BSDEL,
+    M_BSDEL, // backspace or del
+    M_STAR, // * or !
 };
 
 enum layers {
@@ -56,6 +57,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(kc);
 
       set_mods(temp_mods);
+      return false;
+    }
+    case M_STAR:
+    {
+      uint8_t temp_mods = get_mods();
+      uint8_t kc = KC_BSLS;
+
+      if (keyboard_report->mods & MOD_MASK_SHIFT) {
+        clear_mods();
+        kc = KC_SLSH;
+      }
+
+      if (record->event.pressed)
+        register_code(kc);
+      else
+        unregister_code(kc);
+
+      set_mods(temp_mods);
+      return false;
     }
   }
   return true;
@@ -64,21 +84,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Red
- * ,-----------------------------------------------------------------------------------------.
- * | Esc        |   A  |   Z  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
- * |------------+------+------+------+------+-------------+------+------+------+------+------|
- * | Tab/shift  |   Q  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   M  |Enter |
- * |------------+------+------+------+------+------|------+------+------+------+------+------|
- * | <>         |   W  |   X  |   C  |   V  |   B  |   N  | , ?  | ; .  | : /  |   !  |      |
- * |------------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl       | GUI2 | GUI  | Blue |Green |    Space    |Black | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------------'
+ * ,----------------------------------------------------------------------------------------------.
+ * | Caps       |   A  |   Z  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp/Del |
+ * |------------+------+------+------+------+-------------+------+------+------+------+----------|
+ * | <  >       |   Q  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   M  |Enter     |
+ * |------------+------+------+------+------+------|------+------+------+------+------+----------|
+ * | Tab/Shift  |   W  |   X  |   C  |   V  |   B  |   N  | , ?  | ; .  | : /  |  * ! | Tab/Shift|
+ * |------------+------+------+------+------+------+------+------+------+------+------+----------|
+ * | Ctrl       | GUI2 | GUI  | Blue |Green |    Space    |Black | Left | Down |  Up  |Right     |
+ * `---------------------------------------------------------------------------------------------'
  */
   [_RED] = LAYOUT_ortho_4x12(
     KC_CAPS,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    M_BSDEL,
-    M_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
-    KC_LCTL, M_GUI,   KC_LGUI, BLUE,    M_GREEN,  KC_SPC,  KC_SPC,  KC_ALGR, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_NUBS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    M_TAB,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  M_STAR,  M_TAB,
+    KC_LCTL,  M_GUI,   KC_LGUI, BLUE,    M_GREEN, KC_SPC,  KC_SPC,  KC_ALGR, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 /* Blue
@@ -87,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |  $   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |  *   |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | GUI2 | GUI  | Blue |Green |    Space    |Black | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
