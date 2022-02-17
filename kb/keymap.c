@@ -1,7 +1,15 @@
 #include QMK_KEYBOARD_H
+#include <print.h>
 
 #define BLUE MO(_BLUE)
 #define M_TAB MT(MOD_LSFT, KC_TAB)
+
+void keyboard_post_init_user(void) {
+  debug_enable=true;
+  debug_matrix=true;
+  debug_keyboard=true;
+  // debug_mouse=true;
+}
 
 enum custom_keycodes {
     M_GUI,
@@ -51,13 +59,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         kc = KC_DEL;
       }
 
-      if (record->event.pressed)
+      if (record->event.pressed) {
         register_code(kc);
-      else
+      }
+      else {
         unregister_code(kc);
+      }
 
+      unregister_code(KC_DEL);
       set_mods(temp_mods);
-      return false;
+      return true;
     }
     case M_STAR:
     {
