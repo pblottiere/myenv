@@ -1,3 +1,8 @@
+all: compile flash
+	sleep 3
+	setxkbmap fr
+	qmk console
+
 install:
 	qmk setup -H $(PWD)/qmk_firmware -y
 
