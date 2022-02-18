@@ -30,7 +30,10 @@ enum custom_keycodes {
     M_9,
     M_BSDEL, // backspace or del
     M_STAR, // * or !
-    M_BRAC,
+    ALT_MINS,
+    ALT_EQL,
+    ALT_4,
+    ALT_5
 };
 
 enum layers {
@@ -41,6 +44,7 @@ enum layers {
 // switch/case on keyboard events
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode){
+    // 0
     case M_0:
     {
       print("M_0\n");
@@ -54,6 +58,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 1
     case M_1:
     {
       print("M_1\n");
@@ -67,6 +72,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 2
     case M_2:
     {
       print("M_2\n");
@@ -80,6 +86,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 3
     case M_3:
     {
       print("M_3\n");
@@ -93,6 +100,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 4
     case M_4:
     {
       print("M_4\n");
@@ -106,6 +114,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 5
     case M_5:
     {
       print("M_5\n");
@@ -119,6 +128,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 6
     case M_6:
     {
       print("M_6\n");
@@ -132,6 +142,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 7
     case M_7:
     {
       print("M_7\n");
@@ -145,6 +156,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 8
     case M_8:
     {
       print("M_8\n");
@@ -158,6 +170,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    // 9
     case M_9:
     {
       print("M_9\n");
@@ -171,7 +184,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
-    // switch to BLUE layer and set GUI modifier
+    // switch to BLUE layer for numeric keys and set GUI modifier
+    // useful for switching i3 tabs
     case M_GUI:
     {
       print("M_GUI\n");
@@ -184,10 +198,53 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
-    case M_BRAC:
+    // ]
+    case ALT_MINS:
     {
-      print("M_BRAC\n");
+      print("ALT_MINS\n");
+      uint8_t kc = KC_MINS;
+      if(record->event.pressed){
+        register_code(KC_RALT);
+        register_code(kc);
+      } else {
+        unregister_code(KC_RALT);
+        unregister_code(kc);
+      }
+      return false;
+    }
+    // }
+    case ALT_EQL:
+    {
+      print("ALT_EQL\n");
       uint8_t kc = KC_EQL;
+      if(record->event.pressed){
+        register_code(KC_RALT);
+        register_code(kc);
+      } else {
+        unregister_code(KC_RALT);
+        unregister_code(kc);
+      }
+      return false;
+    }
+    // [
+    case ALT_5:
+    {
+      print("ALT_5\n");
+      uint8_t kc = KC_5;
+      if(record->event.pressed){
+        register_code(KC_RALT);
+        register_code(kc);
+      } else {
+        unregister_code(KC_RALT);
+        unregister_code(kc);
+      }
+      return false;
+    }
+    // {
+    case ALT_4:
+    {
+      print("ALT_4\n");
+      uint8_t kc = KC_4;
       if(record->event.pressed){
         register_code(KC_RALT);
         register_code(kc);
@@ -220,6 +277,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       set_mods(temp_mods);
       return true;
     }
+    // * or ! with shift modifier
     case M_STAR:
     {
       print("M_STAR\n");
@@ -281,7 +339,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_BLUE] = LAYOUT_ortho_4x12(
   KC_NO,   M_0,     M_1,     M_2,     M_3,     M_4,     M_5,     M_6,     M_7,     M_8,     M_9,     KC_NO,
-  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   M_BRAC,  KC_RBRC,
+  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   ALT_4,   ALT_EQL, ALT_5,   ALT_MINS,KC_5,    KC_MINS,
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_RALT, KC_NO,   KC_NO,   KC_NO,   KC_NO
   )
