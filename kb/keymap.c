@@ -18,22 +18,22 @@ void keyboard_post_init_user(void) {
 // custom keycodes and layers
 enum custom_keycodes {
     M_GUI = SAFE_RANGE,
-    M_0,
-    M_1,
-    M_2,
-    M_3,
-    M_4,
-    M_5,
-    M_6,
-    M_7,
-    M_8,
-    M_9,
     M_BSDEL, // backspace or del
     M_STAR, // * or !
     ALT_MINS,
     ALT_EQL,
     ALT_4,
-    ALT_5
+    ALT_5,
+    M_0 = SAFE_RANGE + KC_0,
+    M_1 = SAFE_RANGE + KC_1,
+    M_2 = SAFE_RANGE + KC_2,
+    M_3 = SAFE_RANGE + KC_3,
+    M_4 = SAFE_RANGE + KC_4,
+    M_5 = SAFE_RANGE + KC_5,
+    M_6 = SAFE_RANGE + KC_6,
+    M_7 = SAFE_RANGE + KC_7,
+    M_8 = SAFE_RANGE + KC_8,
+    M_9 = SAFE_RANGE + KC_9,
 };
 
 enum layers {
@@ -44,137 +44,18 @@ enum layers {
 // switch/case on keyboard events
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode){
-    // 0
     case M_0:
-    {
-      print("M_0\n");
-      uint8_t kc = KC_0;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 1
     case M_1:
-    {
-      print("M_1\n");
-      uint8_t kc = KC_1;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 2
     case M_2:
-    {
-      print("M_2\n");
-      uint8_t kc = KC_2;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 3
     case M_3:
-    {
-      print("M_3\n");
-      uint8_t kc = KC_3;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 4
     case M_4:
-    {
-      print("M_4\n");
-      uint8_t kc = KC_4;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 5
     case M_5:
-    {
-      print("M_5\n");
-      uint8_t kc = KC_5;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 6
     case M_6:
-    {
-      print("M_6\n");
-      uint8_t kc = KC_6;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 7
     case M_7:
-    {
-      print("M_7\n");
-      uint8_t kc = KC_7;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 8
     case M_8:
-    {
-      print("M_8\n");
-      uint8_t kc = KC_8;
-      if(record->event.pressed){
-        register_mods(MOD_LSFT);
-        register_code(kc);
-      } else {
-        unregister_mods(MOD_LSFT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // 9
     case M_9:
     {
-      print("M_9\n");
-      uint8_t kc = KC_9;
+      const uint8_t kc = keycode - SAFE_RANGE;
       if(record->event.pressed){
         register_mods(MOD_LSFT);
         register_code(kc);
