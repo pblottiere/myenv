@@ -16,7 +16,6 @@ void keyboard_post_init_user(void) {
 }
 
 // Custom keycodes.
-//   - Gui keycode: SAFE_RANGE + kc + 2000
 //   - AltGr keycode: SAFE_RANGE + kc + 1000
 //   - shifted keycode: SAFE_RANGE + kc
 enum custom_keycodes {
@@ -43,144 +42,72 @@ enum layers {
     _BLUE,
 };
 
+bool switch_key(keyrecord_t *record, uint16_t keycode_1, uint16_t keycode_2, int mask, bool clear)
+{
+  uint16_t kc = keycode_1;
+  uint8_t temp_mods = get_mods();
+
+  if (keyboard_report->mods & mask) {
+    kc = keycode_2;
+  }
+
+  if (record->event.pressed) {
+    if ( clear ) {
+      clear_mods();
+    }
+
+    register_code(kc);
+  }
+  else {
+    unregister_code(kc);
+  }
+
+  if ( clear ) {
+    set_mods(temp_mods);
+  }
+
+  return false;
+}
+
 // switch/case on keyboard events
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode){
     // i3 switch tab
     case KC_Q:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_1;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_1, MOD_MASK_GUI, false);
     }
     case KC_W:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_2;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_2, MOD_MASK_GUI, false);
     }
     case KC_E:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_3;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_3, MOD_MASK_GUI, false);
     }
     case KC_R:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_4;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_4, MOD_MASK_GUI, false);
     }
     case KC_T:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_5;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_5, MOD_MASK_GUI, false);
     }
     case KC_Y:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_6;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_6, MOD_MASK_GUI, false);
     }
     case KC_U:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_7;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_7, MOD_MASK_GUI, false);
     }
     case KC_I:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_8;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_8, MOD_MASK_GUI, false);
     }
     case KC_O:
     {
-      if (keyboard_report->mods & MOD_MASK_GUI) {
-        keycode = KC_9;
-      }
-
-      if (record->event.pressed) {
-        register_code(keycode);
-      }
-      else {
-        unregister_code(keycode);
-      }
-
-      return false;
+      return switch_key(record, keycode, KC_9, MOD_MASK_GUI, false);
     }
     // numeric values in blue layer
     case M_0:
@@ -223,43 +150,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // BACKSPACE or DEL with SHIFT modifier
     case M_BSDEL:
     {
-      uint8_t temp_mods = get_mods();
-      uint8_t kc = KC_BSPC;
-
-      if (keyboard_report->mods & MOD_MASK_SHIFT) {
-        clear_mods();
-        kc = KC_DEL;
-      }
-
-      if (record->event.pressed) {
-        register_code(kc);
-      }
-      else {
-        unregister_code(kc);
-      }
-
+      switch_key(record, KC_BSPC, KC_DEL, MOD_MASK_SHIFT, true);
       unregister_code(KC_DEL);
-      set_mods(temp_mods);
       return true;
     }
     // * or $ with shift modifier
     case M_STAR:
     {
-      uint8_t temp_mods = get_mods();
-      uint8_t kc = KC_BSLS;
-
-      if (keyboard_report->mods & MOD_MASK_SHIFT) {
-        clear_mods();
-        kc = KC_RBRC;
-      }
-
-      if (record->event.pressed)
-        register_code(kc);
-      else
-        unregister_code(kc);
-
-      set_mods(temp_mods);
-      return false;
+      return switch_key(record, KC_BSLS, KC_RBRC, MOD_MASK_SHIFT, true);
     }
     default:
     {
