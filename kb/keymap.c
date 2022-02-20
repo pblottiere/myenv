@@ -15,15 +15,17 @@ void keyboard_post_init_user(void) {
   // debug_mouse=true;
 }
 
-// custom keycodes and layers
+// Custom keycodes.
+//   - Gui keycode: SAFE_RANGE + kc + 2000
+//   - AltGr keycode: SAFE_RANGE + kc + 1000
+//   - shifted keycode: SAFE_RANGE + kc
 enum custom_keycodes {
-    M_GUI = SAFE_RANGE,
-    M_BSDEL, // backspace or del
+    M_BSDEL = SAFE_RANGE, // backspace or del
     M_STAR, // * or !
-    ALT_MINS,
-    ALT_EQL,
-    ALT_4,
-    ALT_5,
+    ALT_EQL = SAFE_RANGE + KC_EQL + 1000,
+    ALT_4 = SAFE_RANGE + KC_4 + 1000,
+    ALT_5 = SAFE_RANGE + KC_5 + 1000,
+    ALT_MINS = SAFE_RANGE + KC_MINS + 1000,
     M_0 = SAFE_RANGE + KC_0,
     M_1 = SAFE_RANGE + KC_1,
     M_2 = SAFE_RANGE + KC_2,
@@ -44,6 +46,143 @@ enum layers {
 // switch/case on keyboard events
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode){
+    // i3 switch tab
+    case KC_Q:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_1;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    case KC_W:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_2;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    case KC_E:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_3;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    case KC_R:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_4;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    case KC_T:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_5;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    case KC_Y:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_6;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    case KC_U:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_7;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    case KC_I:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_8;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    case KC_O:
+    {
+      if (keyboard_report->mods & MOD_MASK_GUI) {
+        keycode = KC_9;
+      }
+
+      if (record->event.pressed) {
+        register_code(keycode);
+      }
+      else {
+        unregister_code(keycode);
+      }
+
+      return false;
+    }
+    // numeric values in blue layer
     case M_0:
     case M_1:
     case M_2:
@@ -55,7 +194,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M_8:
     case M_9:
     {
-      const uint8_t kc = keycode - SAFE_RANGE;
+      const uint16_t kc = keycode - SAFE_RANGE;
       if(record->event.pressed){
         register_mods(MOD_LSFT);
         register_code(kc);
@@ -65,67 +204,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
-    // switch to BLUE layer for numeric keys and set GUI modifier
-    // useful for switching i3 tabs
-    case M_GUI:
-    {
-      print("M_GUI\n");
-      if(record->event.pressed){
-        layer_on(_BLUE);
-        register_mods(MOD_LGUI);
-      } else {
-        layer_off(_BLUE);
-        unregister_mods(MOD_LGUI);
-      }
-      return false;
-    }
-    // ]
+    // AltGr symbols in blue layer
+    case ALT_4:
+    case ALT_5:
+    case ALT_EQL:
     case ALT_MINS:
     {
-      print("ALT_MINS\n");
-      uint8_t kc = KC_MINS;
-      if(record->event.pressed){
-        register_code(KC_RALT);
-        register_code(kc);
-      } else {
-        unregister_code(KC_RALT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // }
-    case ALT_EQL:
-    {
-      print("ALT_EQL\n");
-      uint8_t kc = KC_EQL;
-      if(record->event.pressed){
-        register_code(KC_RALT);
-        register_code(kc);
-      } else {
-        unregister_code(KC_RALT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // [
-    case ALT_5:
-    {
-      print("ALT_5\n");
-      uint8_t kc = KC_5;
-      if(record->event.pressed){
-        register_code(KC_RALT);
-        register_code(kc);
-      } else {
-        unregister_code(KC_RALT);
-        unregister_code(kc);
-      }
-      return false;
-    }
-    // {
-    case ALT_4:
-    {
-      print("ALT_4\n");
-      uint8_t kc = KC_4;
+      const uint16_t kc = keycode - SAFE_RANGE - 1000;
       if(record->event.pressed){
         register_code(KC_RALT);
         register_code(kc);
@@ -138,7 +223,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // BACKSPACE or DEL with SHIFT modifier
     case M_BSDEL:
     {
-      print("M_BSDEL\n");
       uint8_t temp_mods = get_mods();
       uint8_t kc = KC_BSPC;
 
@@ -158,16 +242,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       set_mods(temp_mods);
       return true;
     }
-    // * or ! with shift modifier
+    // * or $ with shift modifier
     case M_STAR:
     {
-      print("M_STAR\n");
       uint8_t temp_mods = get_mods();
       uint8_t kc = KC_BSLS;
 
       if (keyboard_report->mods & MOD_MASK_SHIFT) {
         clear_mods();
-        kc = KC_SLSH;
+        kc = KC_RBRC;
       }
 
       if (record->event.pressed)
@@ -197,14 +280,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+------|------+------+------+------+------+----------|
  * | Tab/Shift  |   W  |   X  |   C  |   V  |   B  |   N  | - _  | . ;  | / :  |  * $ | Tab/Shift|
  * |------------+------+------+------+------+------+------+------+------+------+------+----------|
- * | Ctrl       | GUI2 | GUI  | Blue |           Space           | Left | Down |  Up  |Right     |
+ * | Ctrl       | GUI  | BLUE |      |           Space           | Left | Down |  Up  |Right     |
  * `---------------------------------------------------------------------------------------------'
  */
   [_RED] = LAYOUT_ortho_4x12(
     KC_CAPS,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    M_BSDEL,
     KC_NUBS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
     M_TAB,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  M_STAR,  M_TAB,
-    KC_LCTL,  M_GUI,   KC_LGUI, BLUE,    KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_LCTL,  KC_LGUI, BLUE,    KC_SPC,    KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 /* Blue
@@ -220,7 +303,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_BLUE] = LAYOUT_ortho_4x12(
   KC_NO,   M_0,     M_1,     M_2,     M_3,     M_4,     M_5,     M_6,     M_7,     M_8,     M_9,     KC_NO,
-  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   ALT_4,   ALT_EQL, ALT_5,   ALT_MINS,KC_5,    KC_MINS,
+  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SLSH, ALT_4,   ALT_EQL, ALT_5,   ALT_MINS,KC_5,    KC_MINS,
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_RALT, KC_NO,   KC_NO,   KC_NO,   KC_NO
   )
