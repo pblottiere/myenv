@@ -22,6 +22,7 @@ enum custom_keycodes {
     LSFT_BSDEL = SAFE_RANGE, // backspace or del
     LSFT_STAR, // * or !
     ALT_EQL = SAFE_RANGE + KC_EQL + 1000,
+    ALT_0 = SAFE_RANGE + KC_0 + 1000,
     ALT_2 = SAFE_RANGE + KC_2 + 1000,
     ALT_3 = SAFE_RANGE + KC_3 + 1000,
     ALT_4 = SAFE_RANGE + KC_4 + 1000,
@@ -39,6 +40,7 @@ enum custom_keycodes {
     LSFT_9 = SAFE_RANGE + KC_9,
     LSFT_M = SAFE_RANGE + KC_M,
     LSFT_EQL = SAFE_RANGE + KC_EQL,
+    LSFT_MINS = SAFE_RANGE + KC_MINS,
 };
 
 enum layers {
@@ -138,6 +140,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case LSFT_9:
     case LSFT_M:
     case LSFT_EQL:
+    case LSFT_MINS:
     {
       const uint16_t kc = keycode - SAFE_RANGE;
       if(record->event.pressed){
@@ -150,6 +153,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     }
     // AltGr symbols in blue layer
+    case ALT_0:
     case ALT_2:
     case ALT_3:
     case ALT_4:
@@ -208,9 +212,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
   [_BLUE] = LAYOUT_ortho_4x12(
-  KC_NO,   LSFT_0,  LSFT_1,  LSFT_2,  LSFT_3,  LSFT_4,  LSFT_5,  LSFT_6,  LSFT_7,  LSFT_8,  LSFT_9,  KC_NO,
-  LSFT_EQL,KC_EQL,  ALT_2,   ALT_3,   LSFT_M,  KC_SLSH, ALT_4,   ALT_EQL, ALT_5,   ALT_MINS,KC_5,    KC_MINS,
-  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_RALT, KC_NO,   KC_NO,   KC_NO,   KC_NO
+  LSFT_MINS, LSFT_0,  LSFT_1,  LSFT_2,  LSFT_3,  LSFT_4,  LSFT_5,  LSFT_6,  LSFT_7,  LSFT_8,  LSFT_9,  ALT_0,
+  LSFT_EQL,  KC_EQL,  ALT_2,   ALT_3,   LSFT_M,  KC_SLSH, ALT_4,   ALT_EQL, ALT_5,   ALT_MINS,KC_5,    KC_MINS,
+  KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_RALT, KC_NO,   KC_NO,   KC_NO,   KC_NO
   )
 };
