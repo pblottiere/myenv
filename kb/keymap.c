@@ -5,7 +5,7 @@
 #define BLUE MO(_BLUE)
 
 // mod tap
-#define M_TAB MT(MOD_LSFT, KC_TAB)
+#define LSFT_TAB MT(MOD_LSFT, KC_TAB)
 
 // debug parameters
 void keyboard_post_init_user(void) {
@@ -19,22 +19,26 @@ void keyboard_post_init_user(void) {
 //   - AltGr keycode: SAFE_RANGE + kc + 1000
 //   - shifted keycode: SAFE_RANGE + kc
 enum custom_keycodes {
-    M_BSDEL = SAFE_RANGE, // backspace or del
-    M_STAR, // * or !
+    LSFT_BSDEL = SAFE_RANGE, // backspace or del
+    LSFT_STAR, // * or !
     ALT_EQL = SAFE_RANGE + KC_EQL + 1000,
+    ALT_2 = SAFE_RANGE + KC_2 + 1000,
+    ALT_3 = SAFE_RANGE + KC_3 + 1000,
     ALT_4 = SAFE_RANGE + KC_4 + 1000,
     ALT_5 = SAFE_RANGE + KC_5 + 1000,
     ALT_MINS = SAFE_RANGE + KC_MINS + 1000,
-    M_0 = SAFE_RANGE + KC_0,
-    M_1 = SAFE_RANGE + KC_1,
-    M_2 = SAFE_RANGE + KC_2,
-    M_3 = SAFE_RANGE + KC_3,
-    M_4 = SAFE_RANGE + KC_4,
-    M_5 = SAFE_RANGE + KC_5,
-    M_6 = SAFE_RANGE + KC_6,
-    M_7 = SAFE_RANGE + KC_7,
-    M_8 = SAFE_RANGE + KC_8,
-    M_9 = SAFE_RANGE + KC_9,
+    LSFT_0 = SAFE_RANGE + KC_0,
+    LSFT_1 = SAFE_RANGE + KC_1,
+    LSFT_2 = SAFE_RANGE + KC_2,
+    LSFT_3 = SAFE_RANGE + KC_3,
+    LSFT_4 = SAFE_RANGE + KC_4,
+    LSFT_5 = SAFE_RANGE + KC_5,
+    LSFT_6 = SAFE_RANGE + KC_6,
+    LSFT_7 = SAFE_RANGE + KC_7,
+    LSFT_8 = SAFE_RANGE + KC_8,
+    LSFT_9 = SAFE_RANGE + KC_9,
+    LSFT_M = SAFE_RANGE + KC_M,
+    LSFT_EQL = SAFE_RANGE + KC_EQL,
 };
 
 enum layers {
@@ -110,28 +114,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return switch_key(record, keycode, KC_9, MOD_MASK_GUI, false);
     }
     // * or $ with shift modifier
-    case M_STAR:
+    case LSFT_STAR:
     {
       return switch_key(record, KC_BSLS, KC_RBRC, MOD_MASK_SHIFT, true);
     }
     // BACKSPACE or DEL with SHIFT modifier
-    case M_BSDEL:
+    case LSFT_BSDEL:
     {
       switch_key(record, KC_BSPC, KC_DEL, MOD_MASK_SHIFT, true);
       unregister_code(KC_DEL);
       return true;
     }
     // numeric values in blue layer
-    case M_0:
-    case M_1:
-    case M_2:
-    case M_3:
-    case M_4:
-    case M_5:
-    case M_6:
-    case M_7:
-    case M_8:
-    case M_9:
+    case LSFT_0:
+    case LSFT_1:
+    case LSFT_2:
+    case LSFT_3:
+    case LSFT_4:
+    case LSFT_5:
+    case LSFT_6:
+    case LSFT_7:
+    case LSFT_8:
+    case LSFT_9:
+    case LSFT_M:
+    case LSFT_EQL:
     {
       const uint16_t kc = keycode - SAFE_RANGE;
       if(record->event.pressed){
@@ -144,6 +150,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     }
     // AltGr symbols in blue layer
+    case ALT_2:
+    case ALT_3:
     case ALT_4:
     case ALT_5:
     case ALT_EQL:
@@ -176,16 +184,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------------+------+------+------+------+-------------+------+------+------+------+----------|
  * | <  >       |   Q  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   M  |Enter     |
  * |------------+------+------+------+------+------|------+------+------+------+------+----------|
- * | Tab/Shift  |   W  |   X  |   C  |   V  |   B  |   N  | - _  | . ;  | / :  |  * $ | Tab/Shift|
+ * | Tab/Shift  |   W  |   X  |   C  |   V  |   B  |   N  | : ;  | . -  | / _  |  * $ | Tab/Shift|
  * |------------+------+------+------+------+------+------+------+------+------+------+----------|
  * | Ctrl       | GUI  | BLUE |      |           Space           | Left | Down |  Up  |Right     |
  * `---------------------------------------------------------------------------------------------'
  */
   [_RED] = LAYOUT_ortho_4x12(
-    KC_CAPS,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    M_BSDEL,
-    KC_NUBS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    M_TAB,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  M_STAR,  M_TAB,
-    KC_LCTL,  KC_LGUI, BLUE,    KC_SPC,    KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_CAPS,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,      LSFT_BSDEL,
+    KC_NUBS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,   KC_ENT,
+    LSFT_TAB, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  LSFT_STAR, LSFT_TAB,
+    KC_LCTL,  KC_LGUI, BLUE,    KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,     KC_RGHT
   ),
 
 /* Blue
@@ -200,8 +208,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
   [_BLUE] = LAYOUT_ortho_4x12(
-  KC_NO,   M_0,     M_1,     M_2,     M_3,     M_4,     M_5,     M_6,     M_7,     M_8,     M_9,     KC_NO,
-  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SLSH, ALT_4,   ALT_EQL, ALT_5,   ALT_MINS,KC_5,    KC_MINS,
+  KC_NO,   LSFT_0,  LSFT_1,  LSFT_2,  LSFT_3,  LSFT_4,  LSFT_5,  LSFT_6,  LSFT_7,  LSFT_8,  LSFT_9,  KC_NO,
+  LSFT_EQL,KC_EQL,  ALT_2,   ALT_3,   LSFT_M,  KC_SLSH, ALT_4,   ALT_EQL, ALT_5,   ALT_MINS,KC_5,    KC_MINS,
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_RALT, KC_NO,   KC_NO,   KC_NO,   KC_NO
   )
