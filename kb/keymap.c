@@ -138,9 +138,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if ( kc == KC_8 ) {
           unregister_mods(MOD_LSFT);
         }
+        else {
+          register_mods(MOD_LSFT);
+        }
+
         register_code(kc);
+
         if ( kc == KC_8 ) {
           register_mods(MOD_LSFT);
+        }
+        else {
+          unregister_mods(MOD_LSFT);
         }
       } else {
         unregister_code(kc);
