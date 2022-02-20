@@ -19,15 +19,9 @@ void keyboard_post_init_user(void) {
 //   - AltGr keycode: SAFE_RANGE + kc + 1000
 //   - shifted keycode: SAFE_RANGE + kc
 enum custom_keycodes {
-    LSFT_BSDEL = SAFE_RANGE, // backspace or del
+    M_ESC = SAFE_RANGE,  // ESC or F5 or CapsLock
     LSFT_STAR, // * or !
-    ALT_EQL = SAFE_RANGE + KC_EQL + 1000,
-    ALT_0 = SAFE_RANGE + KC_0 + 1000,
-    ALT_2 = SAFE_RANGE + KC_2 + 1000,
-    ALT_3 = SAFE_RANGE + KC_3 + 1000,
-    ALT_4 = SAFE_RANGE + KC_4 + 1000,
-    ALT_5 = SAFE_RANGE + KC_5 + 1000,
-    ALT_MINS = SAFE_RANGE + KC_MINS + 1000,
+    LSFT_BSDEL, // backspace or del
     LSFT_0 = SAFE_RANGE + KC_0,
     LSFT_1 = SAFE_RANGE + KC_1,
     LSFT_2 = SAFE_RANGE + KC_2,
@@ -41,6 +35,13 @@ enum custom_keycodes {
     LSFT_M = SAFE_RANGE + KC_M,
     LSFT_EQL = SAFE_RANGE + KC_EQL,
     LSFT_MINS = SAFE_RANGE + KC_MINS,
+    ALT_0 = SAFE_RANGE + KC_0 + 1000,
+    ALT_2 = SAFE_RANGE + KC_2 + 1000,
+    ALT_3 = SAFE_RANGE + KC_3 + 1000,
+    ALT_4 = SAFE_RANGE + KC_4 + 1000,
+    ALT_5 = SAFE_RANGE + KC_5 + 1000,
+    ALT_EQL = SAFE_RANGE + KC_EQL + 1000,
+    ALT_MINS = SAFE_RANGE + KC_MINS + 1000,
 };
 
 enum layers {
@@ -127,6 +128,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       unregister_code(KC_DEL);
       return true;
     }
+    // ESC or F5 or CapsLock
+    case M_ESC:
+    {
+      uint16_t kc = KC_ESC;
+
+      if (keyboard_report->mods & MOD_MASK_SHIFT) {
+        kc = KC_F5;
+      }
+      else if (keyboard_report->mods & MOD_MASK_CTRL) {
+        kc = KC_CAPS;
+      }
+
+      if (record->event.pressed) {
+        register_code(kc);
+      }
+      else {
+        unregister_code(kc);
+      }
+
+      return false;
+    }
     // numeric values in blue layer
     case LSFT_0:
     case LSFT_1:
@@ -194,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `---------------------------------------------------------------------------------------------'
  */
   [_RED] = LAYOUT_ortho_4x12(
-    KC_CAPS,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,      LSFT_BSDEL,
+    M_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,      LSFT_BSDEL,
     KC_NUBS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,   KC_ENT,
     LSFT_TAB, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  LSFT_STAR, LSFT_TAB,
     KC_LCTL,  KC_LGUI, BLUE,    KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,     KC_RGHT
