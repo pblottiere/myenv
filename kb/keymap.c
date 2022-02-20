@@ -20,6 +20,7 @@ void keyboard_post_init_user(void) {
 //   - shifted keycode: SAFE_RANGE + kc
 enum custom_keycodes {
     M_ESC = SAFE_RANGE,  // ESC or F5 or CapsLock
+    LSFT_DOT, // . or -
     LSFT_STAR, // * or !
     LSFT_SLSH, // / or _
     LSFT_BSDEL, // backspace or del
@@ -144,6 +145,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       return false;
     }
+    // . or -
+    case LSFT_DOT:
+    {
+      uint16_t kc = KC_COMM;
+      if (keyboard_report->mods & MOD_MASK_SHIFT) {
+        kc = KC_6;
+      }
+
+      if(record->event.pressed){
+        if ( kc == KC_6 ) {
+          unregister_mods(MOD_LSFT);
+        }
+        else {
+          register_mods(MOD_LSFT);
+        }
+
+        register_code(kc);
+
+        if ( kc == KC_6 ) {
+          register_mods(MOD_LSFT);
+        }
+        else {
+          unregister_mods(MOD_LSFT);
+        }
+      } else {
+        unregister_code(kc);
+      }
+
+      return false;
+    }
     // BACKSPACE or DEL with SHIFT modifier
     case LSFT_BSDEL:
     {
@@ -241,7 +272,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RED] = LAYOUT_ortho_4x12(
     M_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,      KC_P,      LSFT_BSDEL,
     KC_NUBS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,      KC_SCLN,   KC_ENT,
-    LSFT_TAB, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, LSFT_SLSH, LSFT_STAR, LSFT_TAB,
+    LSFT_TAB, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    LSFT_DOT,LSFT_SLSH, LSFT_STAR, LSFT_TAB,
     KC_LCTL,  KC_LGUI, BLUE,    KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_LEFT, KC_DOWN,   KC_UP,     KC_RGHT
   ),
 
