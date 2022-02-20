@@ -109,6 +109,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     {
       return switch_key(record, keycode, KC_9, MOD_MASK_GUI, false);
     }
+    // * or $ with shift modifier
+    case M_STAR:
+    {
+      return switch_key(record, KC_BSLS, KC_RBRC, MOD_MASK_SHIFT, true);
+    }
+    // BACKSPACE or DEL with SHIFT modifier
+    case M_BSDEL:
+    {
+      switch_key(record, KC_BSPC, KC_DEL, MOD_MASK_SHIFT, true);
+      unregister_code(KC_DEL);
+      return true;
+    }
     // numeric values in blue layer
     case M_0:
     case M_1:
@@ -146,18 +158,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(kc);
       }
       return false;
-    }
-    // BACKSPACE or DEL with SHIFT modifier
-    case M_BSDEL:
-    {
-      switch_key(record, KC_BSPC, KC_DEL, MOD_MASK_SHIFT, true);
-      unregister_code(KC_DEL);
-      return true;
-    }
-    // * or $ with shift modifier
-    case M_STAR:
-    {
-      return switch_key(record, KC_BSLS, KC_RBRC, MOD_MASK_SHIFT, true);
     }
     default:
     {
