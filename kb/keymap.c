@@ -43,6 +43,8 @@ enum custom_keycodes {
     ALT_3 = SAFE_RANGE + KC_3 + 1000,
     ALT_4 = SAFE_RANGE + KC_4 + 1000,
     ALT_5 = SAFE_RANGE + KC_5 + 1000,
+    ALT_7 = SAFE_RANGE + KC_7 + 1000,
+    ALT_8 = SAFE_RANGE + KC_8 + 1000,
     ALT_EQL = SAFE_RANGE + KC_EQL + 1000,
     ALT_MINS = SAFE_RANGE + KC_MINS + 1000,
 };
@@ -269,6 +271,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ALT_3:
     case ALT_4:
     case ALT_5:
+    case ALT_7:
+    case ALT_8:
     case ALT_EQL:
     case ALT_MINS:
     {
@@ -305,8 +309,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_RED] = LAYOUT_ortho_4x12(
     M_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,      KC_I,    KC_O,      KC_P,      LSFT_BSDEL,
-    KC_NUBS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,      KC_K,    KC_L,      KC_SCLN,   KC_ENT,
-    LSFT_TAB, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    LSFT_DOT2, LSFT_DOT,LSFT_SLSH, LSFT_STAR, LSFT_TAB,
+    LSFT_TAB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,      KC_K,    KC_L,      KC_SCLN,   KC_ENT,
+    KC_NUBS,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    LSFT_DOT2, LSFT_DOT,LSFT_SLSH, LSFT_STAR, LSFT_TAB,
     KC_LCTL,  KC_LGUI, BLUE,    KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,    KC_LEFT, KC_DOWN,   KC_UP,     KC_RGHT
   ),
 
@@ -322,9 +326,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
   [_BLUE] = LAYOUT_ortho_4x12(
-  LSFT_MINS, LSFT_0,  LSFT_1,  LSFT_2,  LSFT_3,  LSFT_4,  LSFT_5,  LSFT_6,  LSFT_7,  LSFT_8,  LSFT_9,  ALT_0,
-  LSFT_EQL,  KC_EQL,  ALT_2,   ALT_3,   LSFT_M,  KC_SLSH, ALT_4,   ALT_EQL, ALT_5,   ALT_MINS,KC_5,    KC_MINS,
-  KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_RALT, KC_NO,   KC_NO,   KC_NO,   KC_NO
+  LSFT_MINS, LSFT_0,  LSFT_1,  LSFT_2,  LSFT_3,  LSFT_4,  LSFT_5,  LSFT_6,  LSFT_7,  LSFT_8,   LSFT_9,  ALT_0,
+  LSFT_EQL,  KC_EQL,  ALT_2,   ALT_3,   LSFT_M,  KC_SLSH, ALT_4,   ALT_EQL, ALT_5,   ALT_MINS, KC_5,    KC_MINS,
+  KC_NO,     KC_2,    KC_7,    KC_0,    KC_9,    KC_NO,    KC_NO,   KC_M,    KC_3,    KC_4,     ALT_7,   ALT_8,
+  KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_RALT, KC_NO,   KC_NO,    KC_NO,   KC_NO
   )
 };
