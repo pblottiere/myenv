@@ -1,1 +1,4 @@
+#! /usr/bin/env bash
+
+unset SSH_ASKPASS
 DISPLAY= pass work/hytech/pblottiere@access-token-gitlab
