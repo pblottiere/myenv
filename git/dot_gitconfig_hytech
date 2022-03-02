@@ -1,0 +1,7 @@
+[user]
+	name = Paul Blottiere
+	email = paul.blottiere@hytech-imaging.fr
+[core]
+	askPass = /home/pblottiere/.git_ask_pass_hytech
+[credential "https://gitlab.hytech-imaging.fr/"]
+	username = pblottiere

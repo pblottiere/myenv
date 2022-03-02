@@ -3,5 +3,5 @@
 if [[ $(file $1) == *" image data"* ]]; then
   tycat $1
 else
-  cat $1
+  bat $1
 fi

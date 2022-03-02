@@ -1,9 +1,12 @@
 [user]
 	name = Blottiere Paul
 	email = blottiere.paul@gmail.com
+[credential "https://github.com"]
+	username = pblottiere
 [core]
 	editor = vim
 	excludesfile = /home/blottiere/.gitignore_global
+	askPass = /home/pblottiere/.git_ask_pass
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	st = status
@@ -33,4 +36,4 @@
 [http]
 	sslVerify = false
 [includeIf "gitdir:~/devel/hytech/"]
-	path = ~/.gitconfig-hytech
+	path = ~/.gitconfig_hytech
