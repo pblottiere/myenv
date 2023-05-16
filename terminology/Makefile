@@ -15,10 +15,14 @@ install:
 
 dark:
 	@echo -n "Install 'terminology' dark configuration..."
-	@ln -sf $(PWD)/config/dark/base.cfg $(HOME)/.config/terminology/config/standard/
+	@rm -rf $(HOME)/.config/terminology/config
+	@mkdir -p $(HOME)/.config/terminology/config/
+	@ln -sf $(PWD)/config/dark $(HOME)/.config/terminology/config/standard
 	@echo ": done"
 
 light:
 	@echo -n "Install 'terminology' light configuration..."
-	@ln -sf $(PWD)/config/light/base.cfg $(HOME)/.config/terminology/config/standard/
+	@rm -rf $(HOME)/.config/terminology/config
+	@mkdir -p $(HOME)/.config/terminology/config/
+	@ln -sf $(PWD)/config/light $(HOME)/.config/terminology/config/standard
 	@echo ": done"

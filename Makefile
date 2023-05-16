@@ -16,3 +16,9 @@ install-git:
 	@cd git && make install
 
 install: install-myenvrc install-vim install-git
+
+dark:
+	@cd terminology && make dark
+
+light:
+	@cd terminology && make light
