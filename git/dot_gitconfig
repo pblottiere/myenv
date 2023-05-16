@@ -7,6 +7,7 @@
 	editor = vim
 	excludesfile = /home/blottiere/.gitignore_global
 	askPass = /home/pblottiere/.git_ask_pass
+	askPass =
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	st = status
@@ -35,5 +36,7 @@
 	prompt = false
 [http]
 	sslVerify = false
-[includeIf "gitdir:~/devel/hytech/"]
+[includeIf "gitdir:/home/pblottiere/devel/hytech/"]
+	path = ~/.gitconfig_hytech
+[includeIf "gitdir:/media/internal/data/"]
 	path = ~/.gitconfig_hytech

@@ -91,11 +91,21 @@ $ EDITOR=vim vieet base.cfg config
 
 ## Tools
 
-To install various tools like:
-
-- `bashtop`
-
+To install various tools (`bashtop`, `pass clip` extension, ...) and custom
+scripts:
 
 ```` bash
-TODO
+$ cd tools
+$ make install
+````
+
+Then add some alias:
+
+```` bash
+alias top='htop'
+alias ping='$HOMME/.cargo/bin/gping'
+alias cat='$HOMME/.local/bin/cat'
+alias meteo='curl https://v2.wttr.in/locmariaplouzane'
+alias pass='pass clip'
+alias space='sudo du -a -h | sort -h'
 ````

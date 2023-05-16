@@ -2,7 +2,7 @@ group "Color_Scheme" struct {
     value "version" int: 1;
     value "md.version" int: 1;
     value "md.name" string: "Dark";
-    value "md.author" string: "Terminology's developers";
+    value "md.author" string: "pblottiere";
     value "md.website" string: "https://www.enlightenment.org/about-terminology";
     value "md.license" string: "BSD-2-Clause";
     group "def" struct {

@@ -6,7 +6,7 @@ set mouse=a
 " syntax highlighting and colors
 syntax on
 set t_Co=256
-colorscheme tergeist
+" colorscheme tergeist
 
 " do not interpret latex symbols
 let g:tex_conceal = ""
@@ -77,7 +77,7 @@ autocmd VimEnter * wincmd p
 autocmd BufEnter * NERDTreeMirror
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 
-let NERDTreeIgnore=['\.o$', '\~$', '\.so$', '\.pyc$', '\.pyf$']
+let NERDTreeIgnore=['\.o$', '\~$', '\.so$', '\.pyc$', '\.pyf$', '__pycache__', 'venv', 'poetry.lock', '\.log', 'dist']
 let g:NERDTreeWinSize=25
 let g:NERDTreeDirArrows=1
 
@@ -130,15 +130,15 @@ nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 autocmd CompleteDone * pclose
 
 " folding
-setlocal foldmethod=indent
-setlocal foldcolumn=1
-setlocal foldlevel=0
-setlocal foldlevelstart=0
-
-autocmd BufRead * set foldmethod=indent
-autocmd BufRead * set foldcolumn=1
-autocmd BufRead * set foldlevel=0
-autocmd BufRead * set foldlevelstart=0
+" setlocal foldmethod=indent
+" setlocal foldcolumn=1
+" setlocal foldlevel=0
+" setlocal foldlevelstart=0
+"
+" autocmd BufRead * set foldmethod=indent
+" autocmd BufRead * set foldcolumn=1
+" autocmd BufRead * set foldlevel=0
+" autocmd BufRead * set foldlevelstart=0
 
 " tagbar
 nnoremap <silent> <c-t> :TagbarToggle<CR>
@@ -169,5 +169,5 @@ let g:airline#extensions#branch#enabled=1
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " ConqueGDB
-let g:ConqueTerm_StartMessages = 1
-let g:ConqueTerm_CloseOnEnd = 1
+" let g:ConqueTerm_StartMessages = 1
+" let g:ConqueTerm_CloseOnEnd = 1

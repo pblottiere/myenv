@@ -5,3 +5,4 @@ bin/YCM-Generator
 vim/dot_vim/plugin/gnupg.vim
 wm/polybar
 kb/qmk_firmware
+tools/pass-clip

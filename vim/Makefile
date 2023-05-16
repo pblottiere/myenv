@@ -4,10 +4,13 @@ install:
 	@ln -sf $(PWD)/dot_vimrc $(HOME)/.vimrc
 	@echo ": done"
 
+clean:
+	rm -rf $(PWD)/dot_vim/bundle/*
+
 all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
 	 build-nerdtree build-syntastic build-snippets build-ultisnips \
 	 build-airline build-ctrlp build-airline-themes build-gnupg \
-	 build-sleuth build-gitgutter build-conquegdb build-nerdtree-git \
+	 build-sleuth build-gitgutter build-nerdtree-git \
 	 build-fugitive
 
 build-fugitive:
