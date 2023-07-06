@@ -6,6 +6,7 @@ set mouse=a
 " syntax highlighting and colors
 syntax on
 set t_Co=256
+set encoding=utf-8
 colorscheme tergeist
 
 " do not interpret latex symbols

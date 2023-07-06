@@ -5,6 +5,7 @@ all:
 install:
 	@echo -n "Install 'wm' configuration..."
 	@ln -sf $(PWD)/dot_xinitrc $(HOME)/.xinitrc
+	@mkdir -p $(HOME)/.config/i3
 	@ln -sf $(PWD)/i3.config $(HOME)/.config/i3/config
 	@mkdir -p $(HOME)/.config/polybar
 	@ln -sf $(PWD)/polybar.ini $(HOME)/.config/polybar/polybar.ini

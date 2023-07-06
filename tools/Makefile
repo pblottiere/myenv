@@ -9,10 +9,12 @@ install: pass-clip dark
 pass-clip:
 	rm -rf pass-clip
 	git clone https://aur.archlinux.org/pass-clip.git
-	cd pass-clip && makepkg -Si
+	cd pass-clip && makepkg -si
 
 dark:
+	@mkdir -p $(HOME)/.local/bin
 	@ln -sf $(PWD)/cat-dark.sh $(HOME)/.local/bin/cat
 
 light:
+	@mkdir -p $(HOME)/.local/bin
 	@ln -sf $(PWD)/cat-light.sh $(HOME)/.local/bin/cat

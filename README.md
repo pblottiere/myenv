@@ -3,7 +3,7 @@
 First of all:
 
 ````
-$ sudo apt-get install git
+$ sudo pacman -S git
 $ git clone https://github.com/pblottiere/myenv
 ````
 
@@ -20,7 +20,6 @@ To install `~/.gitconfig`, `~/.gitcolor`, `~/.gitcompletion` and
 `~/.gitignore_global`:
 
 ````
-$ sudo pacman -S git
 $ cd git
 $ make install
 ````
@@ -64,7 +63,7 @@ Plugins:
 To compile plugins and install `~/.vimrc` and `~/.vim` directory:
 
 ````
-$ sudo pacman -S TODO
+$ sudo pacman -S vim ctags
 $ cd vim
 $ make
 $ make install
@@ -75,7 +74,7 @@ $ make install
 To compile and install the window manager environment (`i3`, `polybar`, ...):
 
 ```` bash
-$ sudo pacman -S awesome-terminal-fonts
+$ sudo pacman -S i3 dmenu awesome-terminal-fonts binutils fakeroot gcc pkg-config
 $ cd wm
 $ make
 $ make install
@@ -95,6 +94,7 @@ To install various tools (`bashtop`, `pass clip` extension, ...) and custom
 scripts:
 
 ```` bash
+$ sudo pacman -S htop bat fzf
 $ cd tools
 $ make install
 ````
@@ -103,8 +103,8 @@ Then add some alias:
 
 ```` bash
 alias top='htop'
-alias ping='$HOMME/.cargo/bin/gping'
-alias cat='$HOMME/.local/bin/cat'
+alias ping='$HOME/.cargo/bin/gping'
+alias cat='$HOME/.local/bin/cat'
 alias meteo='curl https://v2.wttr.in/locmariaplouzane'
 alias pass='pass clip'
 alias space='sudo du -a -h | sort -h'
