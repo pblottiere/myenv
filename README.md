@@ -94,7 +94,7 @@ To install various tools (`bashtop`, `pass clip` extension, ...) and custom
 scripts:
 
 ```` bash
-$ sudo pacman -S htop bat fzf
+$ sudo pacman -S htop bat fzf xclip
 $ cd tools
 $ make install
 ````
