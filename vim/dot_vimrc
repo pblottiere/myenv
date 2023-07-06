@@ -6,7 +6,7 @@ set mouse=a
 " syntax highlighting and colors
 syntax on
 set t_Co=256
-" colorscheme tergeist
+colorscheme tergeist
 
 " do not interpret latex symbols
 let g:tex_conceal = ""

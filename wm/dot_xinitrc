@@ -5,10 +5,10 @@ setxkbmap fr
 # compton &
 
 # background
-feh --bg-scale $HOME/.config/images/20376309.jpg
+feh --bg-scale $HOME/.config/images/black.jpg
 
 # screensaver
-xautolock -time 2 -locker "i3lock -i '$HOME/.config/images/20376309.jpg'" &
+# xautolock -time 2 -locker "i3lock -i '$HOME/.config/images/20376309.jpg'" &
 
 # i3
 exec i3

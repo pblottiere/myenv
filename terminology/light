@@ -31,7 +31,7 @@ group "Color_Scheme" struct {
     }
     group "main" struct {
         group "Color" struct {
-            value "r" uchar: 0;
+            value "r" uchar: 255;
             value "g" uchar: 0;
             value "b" uchar: 0;
             value "a" uchar: 255;

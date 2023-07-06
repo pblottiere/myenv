@@ -18,6 +18,8 @@ dark:
 	@rm -rf $(HOME)/.config/terminology/config
 	@mkdir -p $(HOME)/.config/terminology/config/
 	@ln -sf $(PWD)/config/dark $(HOME)/.config/terminology/config/standard
+	@edje_cc $(PWD)/themes/default.edc -sd $(PWD)/themes/sounds/ -id $(PWD)/themes/images/
+	@ln -sf $(PWD)/themes/default.edj $(HOME)/.config/terminology/themes/dark.edj
 	@echo ": done"
 
 light:
@@ -25,4 +27,6 @@ light:
 	@rm -rf $(HOME)/.config/terminology/config
 	@mkdir -p $(HOME)/.config/terminology/config/
 	@ln -sf $(PWD)/config/light $(HOME)/.config/terminology/config/standard
+	@edje_cc $(PWD)/themes/default.edc -sd $(PWD)/themes/sounds/ -id $(PWD)/themes/images/
+	@ln -sf $(PWD)/themes/default.edj $(HOME)/.config/terminology/themes/light.edj
 	@echo ": done"

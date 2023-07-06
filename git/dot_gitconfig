@@ -36,6 +36,7 @@
 	prompt = false
 [http]
 	sslVerify = false
+	postBuffer = 524288000
 [includeIf "gitdir:/home/pblottiere/devel/hytech/"]
 	path = ~/.gitconfig_hytech
 [includeIf "gitdir:/media/internal/data/"]
