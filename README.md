@@ -109,3 +109,13 @@ alias meteo='curl https://v2.wttr.in/locmariaplouzane'
 alias pass='pass clip'
 alias space='sudo du -a -h | sort -h'
 ````
+
+## Passphrase mode
+
+Configure `pinentry`:
+
+```` bash
+$ cat /etc/pinentry/preexec
+#!/hint/sh
+exec /usr/bin/pinentry-tty "$@"
+````
