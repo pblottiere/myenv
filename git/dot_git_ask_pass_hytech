@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 
 unset SSH_ASKPASS
-pass work/hytech/pblottiere@access-token-gitlab
+/usr/bin/pass work/hytech/pblottiere@access-token-gitlab
