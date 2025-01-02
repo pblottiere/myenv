@@ -7,9 +7,9 @@ install:
 clean:
 	rm -rf $(PWD)/dot_vim/bundle/*
 
-all: build-ycm build-autoclose build-indentline build-tagbar build-spell \
-	 build-nerdtree build-syntastic build-snippets build-ultisnips \
-	 build-airline build-ctrlp build-airline-themes build-gnupg \
+all: build-ycm build-autoclose build-indentline build-tagbar \
+	 build-nerdtree build-syntastic \
+	 build-airline build-ctrlp build-airline-themes \
 	 build-sleuth build-gitgutter build-nerdtree-git \
 	 build-fugitive
 
@@ -42,7 +42,7 @@ build-airline:
 	fi
 
 build-ycm:
-	if [ ! -d "$(PWD)/dot_vim/bundle/YouCompleteMe" ]; \
+	if [ ! -d $(PWD)/dot_vim/bundle/YouCompleteMe ]; \
 	then \
 		git clone https://github.com/Valloric/YouCompleteMe.git \
 			$(PWD)/dot_vim/bundle/YouCompleteMe; \

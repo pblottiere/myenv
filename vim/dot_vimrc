@@ -5,9 +5,10 @@ set mouse=a
 
 " syntax highlighting and colors
 syntax on
-set t_Co=256
+" set t_Co=256
 set encoding=utf-8
-colorscheme tergeist
+colorscheme archery
+set termguicolors
 
 " do not interpret latex symbols
 let g:tex_conceal = ""
@@ -165,6 +166,7 @@ set laststatus=2
 let g:airline_theme = 'minimalist'
 let g:airline#extensions#hunks#enabled=1
 let g:airline#extensions#branch#enabled=1
+" let g:airline_theme = 'archery'
 
 " a.vim
 map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
