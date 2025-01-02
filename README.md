@@ -88,6 +88,8 @@ To edit EET file:
 $ EDITOR=vim vieet base.cfg config
 ````
 
+Note: i3 config needs to call `terminology` with the proper `Tergeist` colorsheme
+
 ## Tools
 
 To install various tools (`bashtop`, `pass clip` extension, ...) and custom
@@ -105,9 +107,14 @@ Then add some alias:
 alias top='htop'
 alias ping='$HOME/.cargo/bin/gping'
 alias cat='$HOME/.local/bin/cat'
-alias meteo='curl https://v2.wttr.in/locmariaplouzane'
 alias pass='pass clip'
 alias space='sudo du -a -h | sort -h'
+alias temp="watch -n 2 'sensors | grep Core'"
+alias pass-gitlab='/usr/bin/pass work/hytech/gitlab | xclip -selection clipboard'
+alias pass-gitlab-token='/usr/bin/pass work/hytech/pblottiere@access-token-gitlab | xclip -selection clipboard'
+alias cmake-qgis='cmake -G Ninja -DWITH_SERVER=TRUE -DWITH_3D=FALSE -DWITH_QTWEBKIT=FALSE -DCMAKE_BUILD_TYPE=Debug ..'
+alias wm='sudo wifi-menu'
+
 ````
 
 ## Passphrase mode
@@ -118,4 +125,12 @@ Configure `pinentry`:
 $ cat /etc/pinentry/preexec
 #!/hint/sh
 exec /usr/bin/pinentry-tty "$@"
+````
+
+## Keyboard
+
+```` console
+$ cd kb
+$ make install
+$ make compile
 ````
