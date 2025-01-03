@@ -121,7 +121,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     case KC_ENT:
     {
-      return switch_key(record, KC_ENT, KC_BSPC, true);
+      uint16_t kc = KC_ENT;
+      uint16_t mod = -1;
+
+      if (keyboard_report->mods & MOD_MASK_ALT) {
+        kc = KC_BSPC;
+        mod = MOD_LALT;
+      }
+
+      if(record->event.pressed) {
+        if (kc == KC_BSPC  && mod == MOD_LALT) {
+          unregister_mods(mod);
+        }
+        register_code(kc);
+        if (kc == KC_BSPC) {
+          register_mods(mod);
+        }
+      } else {
+        unregister_code(kc);
+      }
+      return false;
     }
     case KC_LBRC:
     {
