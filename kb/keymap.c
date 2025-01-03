@@ -51,6 +51,31 @@ bool switch_key(keyrecord_t *record, uint16_t kc_1, uint16_t kc_2, bool keep_on_
   return false;
 }
 
+bool switch_key2(keyrecord_t *record, uint16_t kc_1, uint16_t kc_2)
+{
+  uint16_t kc = kc_1;
+
+  if (keyboard_report->mods & MOD_MASK_ALT) {
+    kc = kc_2;
+  }
+
+  if(record->event.pressed) {
+    if (kc == kc_2) {
+      unregister_mods(MOD_LALT);
+      register_mods(MOD_LSFT);
+    }
+    register_code(kc);
+    if (kc == kc_2) {
+      register_mods(MOD_LALT);
+      unregister_mods(MOD_LSFT);
+    }
+  } else {
+    unregister_code(kc);
+  }
+
+  return false;
+}
+
 // switch/case on keyboard events
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode){
@@ -96,23 +121,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     case KC_ENT:
     {
-      return switch_key(record, KC_ENT, KC_MINS, false);
+      return switch_key(record, KC_ENT, KC_BSPC, true);
     }
-    case KC_UP:
+    case KC_LBRC:
     {
-      return switch_key(record, KC_UP, KC_LBRC, false);
+      return switch_key(record, KC_LBRC, KC_UP, true);
     }
-    case KC_LEFT:
+    case KC_QUOT:
     {
-      return switch_key(record, KC_LEFT, KC_QUOT, false);
+      return switch_key(record, KC_QUOT, KC_LEFT, true);
     }
-    case KC_RGHT:
+    case KC_GRV:
     {
-      return switch_key(record, KC_RGHT, KC_GRV, false);
+      return switch_key(record, KC_GRV, KC_RGHT, true);
     }
-    case KC_DOWN:
+    case KC_BSLS:
     {
-      return switch_key(record, KC_DOWN, KC_BSLS, false);
+      return switch_key(record, KC_BSLS, KC_DOWN, true);
+    }
+    case KC_MINS:
+    {
+      return switch_key2(record, KC_MINS, KC_0);
+    }
+    case KC_SCLN:
+    {
+      return switch_key2(record, KC_SCLN, KC_9);
+    }
+    case KC_SLSH:
+    {
+      return switch_key2(record, KC_SLSH, KC_1);
+    }
+    case KC_EQL:
+    {
+      return switch_key2(record, KC_EQL, KC_8);
     }
     default:
     {
@@ -124,9 +165,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MAIN] = LAYOUT_ortho_4x12(
-    KC_ESC,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,      KC_I,    KC_O,      KC_P,      KC_BSPC,
-    KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,      KC_K,    KC_L,      KC_SCLN,   KC_ENT,
-    KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,      KC_COMMA,KC_DOT,    KC_UP,     KC_RBRC,
-    KC_LCTL,  KC_LGUI, KC_LALT, KC_RALT, KC_RGUI, KC_SPC,  KC_SPC,  KC_SLSH,   KC_EQL,  KC_LEFT,   KC_DOWN,   KC_RGHT
+    KC_ESC,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,      KC_I,    KC_O,      KC_P,      KC_ENT,
+    KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,      KC_K,    KC_L,      KC_SCLN,   KC_MINS,
+    KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,      KC_COMMA,KC_DOT,    KC_LBRC,   KC_RBRC,
+    KC_LCTL,  KC_LGUI, KC_LALT, KC_RCTL, KC_RALT, KC_SPC,  KC_SPC,  KC_SLSH,   KC_EQL,  KC_QUOT,   KC_BSLS,   KC_GRV
   ),
 };
