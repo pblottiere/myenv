@@ -1,5 +1,10 @@
 #include QMK_KEYBOARD_H
 #include <print.h>
+#include <timer.h>
+
+static uint16_t pressed_timer;
+static uint16_t pressed_key = -1;
+static uint16_t pressed_enabled = false;
 
 // debug parameters
 void keyboard_post_init_user(void) {
@@ -12,6 +17,24 @@ void keyboard_post_init_user(void) {
 enum layers {
     _MAIN,
 };
+
+// specifically manage some long press key
+void matrix_scan_user(void) {
+  if (pressed_key != -1) {
+    if (timer_elapsed(pressed_timer) > 200) {
+      pressed_enabled = true;
+      pressed_timer = timer_read();
+    }
+    if (pressed_enabled && timer_elapsed(pressed_timer) > 50) {
+      pressed_timer = timer_read();
+      if (pressed_key == KC_LEFT || pressed_key == KC_RIGHT || pressed_key == KC_DOWN || pressed_key == KC_UP) {
+        unregister_mods(MOD_LALT);
+        tap_code(pressed_key);
+        register_mods(MOD_LALT);
+      }
+    }
+  }
+}
 
 bool switch_key(keyrecord_t *record, uint16_t kc_1, uint16_t kc_2, bool keep_on_sft)
 {
@@ -37,6 +60,8 @@ bool switch_key(keyrecord_t *record, uint16_t kc_1, uint16_t kc_2, bool keep_on_
   }
 
   if(record->event.pressed) {
+    pressed_timer = timer_read();
+    pressed_key = kc;
     if (kc == kc_2  && mod == MOD_LALT) {
       unregister_mods(mod);
     }
@@ -45,6 +70,8 @@ bool switch_key(keyrecord_t *record, uint16_t kc_1, uint16_t kc_2, bool keep_on_
       register_mods(mod);
     }
   } else {
+    pressed_key = -1;
+    pressed_enabled = false;
     unregister_code(kc);
   }
 

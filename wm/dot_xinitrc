@@ -1,5 +1,6 @@
 # keyboard layout
-setxkbmap fr
+# setxkbmap fr
+setxkbmap -layout us -variant intl
 
 # transparency
 # compton &
