@@ -122,6 +122,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     {
       return switch_key(record, KC_R, KC_4, true);
     }
+    case KC_S:
+    {
+      return switch_key2(record, KC_S, KC_4);
+    }
+    case KC_H:
+    {
+      return switch_key2(record, KC_H, KC_3);
+    }
+    case KC_A:
+    {
+      return switch_key2(record, KC_A, KC_2);
+    }
+    case KC_X:
+    {
+      return switch_key2(record, KC_X, KC_7);
+    }
+    case KC_M:
+    {
+      return switch_key2(record, KC_M, KC_5);
+    }
     case KC_T:
     {
       return switch_key(record, KC_T, KC_5, true);
