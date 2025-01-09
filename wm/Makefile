@@ -1,6 +1,4 @@
-all:
-	@git clone https://aur.archlinux.org/polybar.git
-	@cd polybar && makepkg -si
+all: install
 
 install:
 	@echo -n "Install 'wm' configuration..."
