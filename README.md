@@ -74,7 +74,7 @@ $ make install
 To compile and install the window manager environment (`i3`, `polybar`, ...):
 
 ```` bash
-$ sudo pacman -S i3 dmenu awesome-terminal-fonts binutils fakeroot gcc pkg-config
+$ sudo pacman -S i3 polybar dmenu awesome-terminal-fonts binutils fakeroot gcc pkg-config
 $ cd wm
 $ make
 $ make install
